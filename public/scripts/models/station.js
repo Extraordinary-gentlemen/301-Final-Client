@@ -9,7 +9,7 @@ var app = app || {};
 
   // Get a list of all available vehicle years and parse as an array
   module.getMakes = year => { // eslint-disable-line
-    $.get('http://www.fueleconomy.gov/ws/rest/vehicle/menu/year')
+    $.get('https://www.fueleconomy.gov/ws/rest/vehicle/menu/year')
       .then(results => {
       module.xmlData = module.xmlToJson(results).menuItems.menuItem.map(obj => obj.text['#text']); // eslint-disable-line
       }, console.error);
