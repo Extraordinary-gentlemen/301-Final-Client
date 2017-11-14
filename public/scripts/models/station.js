@@ -3,9 +3,11 @@
 var app = app || {};
 
 (function(module) {
-  let __API_URL__ = process.env.__API_URL__; // eslint-disable-line
-  // 'https://extraordinary-gentlemen.herokuapp.com/';
+  // Set the __API_URL__ for requests to the server
+  let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com';
+  if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
 
+  // Get a list of all available vehicle years and parse as an array
   module.getMakes = year => { // eslint-disable-line
     $.get('http://www.fueleconomy.gov/ws/rest/vehicle/menu/year')
       .then(results => {
@@ -13,11 +15,8 @@ var app = app || {};
       }, console.error);
   };
 
-  // module.test = (ctx, next) => {
-  //   $.get(`${module.__API_URL__}/api/v1/books`)
-  //     .then(Book.loadAll)
-  //     .then(next)
-  //     .catch(errorCallback);
-  // };
+  // Test route to check communication with the API
+  $.get(`${__API_URL__}/test`)
+    .then( console.log, console.error);
 
 })(app);

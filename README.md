@@ -25,6 +25,8 @@ pumpfinder-client:  \__API_URL__	export \__API_URL__='http://localhost:4000'
 ### 11/13/17
 - Initial directory setup
 - Initialized npm project
+- Setup server to host static files
+- Established communication with API server
 - Pushed to heroku
 
 
