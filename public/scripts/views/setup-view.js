@@ -8,7 +8,7 @@ var app = app || {};
   const $yearsSelect = $('select[name="vehicle-year"]');
 
   setupView.loadYears = () => {
-    $yearsSelect.append(`<option value="Vehicle Year">Vehicle Year</option>`);
+    $yearsSelect.append(`<option value="">Vehicle Year</option>`);
     for(let i = 2018; i > 1983; i--) {
       $yearsSelect.append(`<option value="${i}">${i}</option>`);
     }
@@ -20,9 +20,7 @@ var app = app || {};
 
     // Event Listeners
     $yearsSelect.on('change', e => {
-      if(!e.target.value === 'Vehicle Year') console.log(e.target.value); //eslint-disable-line
-      // if(!e.target.value === 'Vehicle Year') module.setup.getMakes(e.target.value); //eslint-disable-line
-      console.log(e.target.value);
+      if(e.target.value) module.setup.getMakes(e.target.value);
     });
   });
 

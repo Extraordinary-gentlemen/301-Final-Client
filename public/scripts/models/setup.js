@@ -10,12 +10,12 @@ var app = app || {};
   // Establishing the setup object
   const setup = {};
 
+  setup.parseXML = xml => module.xmlToJson(xml).menuItems.menuItem.map(obj => obj.text['#text']);
+
   // Get a list of all available vehicle years and parse as an array
   setup.getMakes = year => { // eslint-disable-line
-    $.get('https://www.fueleconomy.gov/ws/rest/vehicle/menu/year')
-      .then(results => {
-      setup.makes = module.xmlToJson(results).menuItems.menuItem.map(obj => obj.text['#text']); // eslint-disable-line
-      }, console.error);
+    $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/make?year=${year}`)
+      .then(results => setup.makes = setup.parseXML(results), console.error);
   };
 
   // Test route to check communication with the API
