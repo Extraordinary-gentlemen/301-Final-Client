@@ -9,6 +9,7 @@ var app = app || {};
   setupView.$makeSelect = $('select[name="vehicle-make"]');
   setupView.$modelSelect = $('select[name="vehicle-model"]');
 
+  // Select Box Methods
   setupView.loadYears = () => {
     for(let i = 2018; i > 1983; i--) {
       $yearSelect.append(`<option value="${i}">${i}</option>`);
@@ -36,10 +37,9 @@ var app = app || {};
     console.log('emptying');
   };
 
-  // $('select[name="vehicle-make"]').children().first().prop('selected', 'selected')
 
+  // Page load initializations
   $(() => {
-    /* Page load initializations */
     setupView.loadYears();
 
     // Event Listeners
@@ -68,6 +68,20 @@ var app = app || {};
         console.log(`Nabbed ${module.setup.myCar.year} ${val} models`);
       } else { // "Model not listed" or "select model" selected
         delete module.setup.myCar.make;
+        if(val) { // "Model not listed" selected
+          console.log('Make this hide the select boxes!');
+        }
+      }
+    });
+
+    setupView.$modelSelect.on('change', e => {
+      let val = e.target.value;
+      if(val && val !== 'none') { // Model Selected
+        module.setup.myCar.model = val;
+        module.setup.getCar(module.setup.myCar.year, module.setup.myCar.make, val);
+        console.log(`Nabbed ${module.setup.myCar.year} ${module.setup.myCar.make} ${val}`);
+      } else { // "Model not listed" or "select model" selected
+        delete module.setup.myCar.model;
         if(val) { // "Model not listed" selected
           console.log('Make this hide the select boxes!');
         }
