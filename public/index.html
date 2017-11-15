@@ -1,71 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <html lang="en">
+  <head>
     <title>Pump Finder</title>
-    <link href="img/favicon.png" rel="icon" type="image/png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Pump Finder" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pumpfinder.herokuapp.com/" />
+    <meta property="og:url" content="extraordinary-gentlemen.github.io/pumpfinder-client/" />
     <meta property="og:image" content="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/matte-white-square-icons-business/124715-matte-white-square-icon-business-gaspump.png" />
-    <link href="https://fonts.googleapis.com/css?family=Barlow|Headland+One|Kameron|Lato|Open+Sans|Raleway|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="styles/reset.css" type="text/css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
-    <link rel="stylesheet" href="vendor/styles/map.css">
   </head>
   <body>
     <header>
-      <a id="logo" href="index.html"><img class="left" src="img/logo.png" alt="Pumpfinder logo" height="100"></a>
-
       <h1>Pump Finder</h1>
-      <!-- <div class="icon-menu"></div>
+      <div class="icon-menu"></div>
       <nav>
         <ul>
           <li>Setup</li>
           <li>Find Gas</li>
           <li>About Us</li>
         </ul>
-      </nav> -->
+      </nav>
     </header>
     <main>
-
-      <h2>xxxxxxxxxxxxxxxxx</h2>
-
       <section id="vehicle-setup" class="container">
         <form>
-          <select name="vehicle-year">
-            <option value="">Select Year</option>
-          </select>
-          <select name="vehicle-make">
-            <option value="" selected>Select Make</option>
-            <option value="none">Make Not Listed</option>
-          </select>
-          <select name="vehicle-model">
-            <option value="" selected>Select Model</option>
-            <option value="none">Model Not Listed</option>
-          </select>
+          <label>
+            Select Vehicle Year
+            <select name="vehicle-year"></select>
+          </label>
+          <label>
+            Select Vehicle Make
+            <select name="vehicle-make"></select>
+          </label>
+          <label>
+            Select Vehicle Model
+            <select name="vehicle-model"></select>
+          </label>
           <label>
             Estimated MPG
             <input type="number" name="vehicle-mpg" required>
           </label>
           <label>
-            How many gallons are you buying?</br>
+            How many gallons are you buying?
             <input type="number" name="gas-gallons" required>
           </label>
-          <label>
           <button type="submit" name="submit">Find Cheap Gas!</button>
-        </label>
         </form>
-    </section>
-      <section id="map-display" class="container">
-        <div id="map"></div>
       </section>
-      <section id="gas-data" class="container"></section>
-      <section id="about-us" class="container">
+      <section id="gas-data"></section>
+      <section id="about-us">
         <ul>
           <li>Dustin Mundy</li>
           <li>Joe Waine</li>
@@ -80,13 +67,9 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/javascript" src="vendor/scripts/xmlToJson.js"></script>
-    <script type="text/javascript" src="scripts/models/setup.js"></script>
-    <script type="text/javascript" src="scripts/views/setup-view.js"></script>
+    <script type="text/javascript" src="scripts/models/station.js"></script>
+    <script type="text/javascript" src="scripts/views/page-view.js"></script>
     <script type="text/javascript" src="scripts/controller/routes.js"></script>
-    <script type="text/javascript" src="scripts/map.js"></script>
-    // TODO: Google Places API KEY EXPOSED
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAol70MnsSZw_h0KX0WfGbpA5JtGRhxW8k&v=3.exp&libraries=visualization"></script>
   </body>
 </html>
