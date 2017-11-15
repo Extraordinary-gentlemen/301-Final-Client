@@ -18,25 +18,14 @@ app.get('/', (req, res) => {
   res.sendFile('index.html')
 });
 
-
-
 app.get('/api/v1/markers/*', (req, res) => {
-res.send(fetchJson(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas+stations&location=${req.params.currentlocation}&radius=40&key=AIzaSyB6PFCWQQvDJQhVpPL6PqM3W7ZcywGO1KU`)
-  .then(response => {
-  response.results.map(function(x){
-  return { lat: x.geometry.location.lat, lng: x.geometry.location.lng };
-  }));
-  }))
-});
-
-app.get('/api/v1/markers/*', (req, res) => {
-    res.send(fetchJson(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas+stations&location=${req.params[0]}&radius=40&key=AIzaSyB6PFCWQQvDJQhVpPL6PqM3W7ZcywGO1KU`)
+  fetchJson(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas+stations&location=${req.params[0]}&radius=40&key=AIzaSyB6PFCWQQvDJQhVpPL6PqM3W7ZcywGO1KU`)
     .then(response => {
-    response.results.map(function(x){
-    return { lat: x.geometry.location.lat, lng: x.geometry.location.lng };
-    }));
-    }))
-})
+      res.send(response.results.map(function(x){
+        return { lat: x.geometry.location.lat, lng: x.geometry.location.lng };
+      }));
+    });
+});
 
 
 

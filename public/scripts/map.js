@@ -17,14 +17,17 @@ let renderMap = (lat,lng, zoom) => {
   //   map.setCenter(center)
   // })
 
-  $.get(`/api/v1/${lat}${lng}`
+  $.get(`/api/v1/markers/${lat},${lng}`)
     .then(results => {
+      // console.log(results);
       results.forEach((coordpair) => {
-        new google.maps.Marker({
+        console.log(coordpair);
+        var varker = new google.maps.Marker({
           postion: coordpair,
           map: map
         })
       });
     })
-    .err(err => console.log()`Error Code Mundy 1: ${err}`)
-};
+  // $.get('https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap')
+
+}
