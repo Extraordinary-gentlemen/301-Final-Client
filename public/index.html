@@ -31,6 +31,14 @@
           <li>About Us</li>
         </ul>
       </nav> -->
+      <script type="text/x-handlebars-template" id="store-display-template">
+        <ul>
+          <li class="pre-travel-cost">{{pre-travel-cost}}</li>
+          <li class="post-travel-cost">{{post-travel-cost}}</li>
+          <li class="travel-time">{{travel-time}}</li>
+          <li class="station-display">{{station-display}}</li>
+        </ul>
+      </script>
     </header>
     <main>
       <h1>Welcome to Pump Finder</h1>
@@ -64,8 +72,17 @@
     </section>
       <section id="map-display" class="container">
         <div id="map"></div>
+        <ul class="store-list">
+          <li>
+            <ul>
+              <li id="pre-travel-cost">You are Spending</li>
+              <li id="post-travel-cost">After Travel Cost</li>
+              <li id="travel-time">Your Travel Time</li>
+              <li id="station-display">Buying From</li>
+            </ul>
+          </li>
+        </ul>
       </section>
-      <section id="gas-data" class="container"></section>
       <section id="about-us"  class="container">
         <ul>
           <li>Dustin Mundy</li>
