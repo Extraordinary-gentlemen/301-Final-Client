@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <html lang="en">
     <title>Pump Finder</title>
+    <link href="img/favicon.png" rel="icon" type="image/png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Pump Finder" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="extraordinary-gentlemen.github.io/pumpfinder-client/" />
     <meta property="og:image" content="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/matte-white-square-icons-business/124715-matte-white-square-icon-business-gaspump.png" />
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Headland+One|Kameron|Lato|Open+Sans|Raleway|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="styles/reset.css" type="text/css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
@@ -16,42 +19,50 @@
   </head>
   <body>
     <header>
+      <a id="logo" href="index.html"><img class="left" src="img/logo.png" alt="Pumpfinder logo" height="100"></a>
+
       <h1>Pump Finder</h1>
-      <div class="icon-menu"></div>
+      <!-- <div class="icon-menu"></div>
       <nav>
         <ul>
           <li>Setup</li>
           <li>Find Gas</li>
           <li>About Us</li>
         </ul>
-      </nav>
+      </nav> -->
     </header>
     <main>
+
+      <h2>xxxxxxxxxxxxxxxxx</h2>
+
       <section id="vehicle-setup" class="container">
         <form>
+
+          <select name="vehicle-year">
+            <option value="">Select Year</option>
+          </select>
+
+          <select name="vehicle-make">
+          <option value="">Select Make</option>
+        </select>
+
+        <select name="vehicle-model">
+          <option value="">Select Model</option>
+        </select>
+
           <label>
-            Select Vehicle Year
-            <select name="vehicle-year"></select>
-          </label>
-          <label>
-            Select Vehicle Make
-            <select name="vehicle-make"></select>
-          </label>
-          <label>
-            Select Vehicle Model
-            <select name="vehicle-model"></select>
-          </label>
-          <label>
-            Estimated MPG
+            Estimated MPG</br>
             <input type="number" name="vehicle-mpg" required>
           </label>
           <label>
-            How many gallons are you buying?
+            How many gallons are you buying?</br>
             <input type="number" name="gas-gallons" required>
           </label>
+          <label>
           <button type="submit" name="submit">Find Cheap Gas!</button>
+        </label>
         </form>
-      </section>
+    </section>
       <section id="map-display" class="container">
         <div id="map"></div>
       </section>
