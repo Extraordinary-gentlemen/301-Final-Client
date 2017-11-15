@@ -22,8 +22,8 @@ let renderMap = (lat,lng, zoom) => {
       // console.log(results);
       results.forEach((coordpair) => {
         console.log(coordpair);
-        var varker = new google.maps.Marker({
-          postion: coordpair,
+        var marker = new google.maps.Marker({
+          position: coordpair,
           map: map
         })
       });
