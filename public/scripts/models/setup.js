@@ -23,6 +23,7 @@ var app = app || {};
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/make?year=${year}`)
       .then(results => {
         module.setupView.loadMakes(setup.parseXML(results));
+        module.setupView.$makeSelect.show();
       }, console.error);
   };
 
@@ -31,6 +32,7 @@ var app = app || {};
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=${year}&make=${make}`)
       .then(results => {
         module.setupView.loadModels(setup.parseXML(results));
+        module.setupView.$modelSelect.show();
       }, console.error);
   };
 
@@ -71,6 +73,6 @@ var app = app || {};
 // TODO: jquery hide and show the selects
 // TODO: modify inputs so min number is 0 allow floats (see S.O.)
 // TODO: Look into fancier jQuery for showing the pieces, like slide?
-// TODO: Add some sort of recursive callback for refetching on fail, but increment (max 5 tries)
+// TODO: Add some sort of recursive callback for refetching on fail, but increment (max 3 tries)
 // TODO: event handler on form submit
 // TODO: throw in a little page.js action

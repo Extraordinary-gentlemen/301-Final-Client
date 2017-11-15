@@ -42,6 +42,8 @@ var app = app || {};
   // Page load initializations
   $(() => {
     setupView.loadYears();
+    setupView.$makeSelect.hide();
+    setupView.$modelSelect.hide();
 
     // Event Listeners
     $yearSelect.on('change', e => {
