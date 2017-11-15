@@ -1,5 +1,9 @@
 // Google Maps
 
+// Set the __API_URL__ for requests to the server
+let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com'; // eslint-disable-line
+if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
+
 let renderMap = (lat,lng, zoom) => {
   let map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: lat, lng: lng},
@@ -17,7 +21,7 @@ let renderMap = (lat,lng, zoom) => {
   //   map.setCenter(center)
   // })
 
-  $.get(`https://extraordinary-gentlemen.herokuapp.com/api/v1/markers/${lat},${lng}`)
+  $.get(`${__API_URL__}/api/v1/markers/${lat},${lng}`)
     .then(results => {
       // console.log(results);
       results.forEach((location) => {
