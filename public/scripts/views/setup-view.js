@@ -13,22 +13,30 @@ var app = app || {};
     for(let i = 2018; i > 1983; i--) {
       $yearSelect.append(`<option value="${i}">${i}</option>`);
     }
-    $yearSelect.append(`<option value="no-year">Year Not Listed</option>`);
+    $yearSelect.append(`<option value="none">Year Not Listed</option>`);
   };
 
-  setupView.loadSpec = (list, makes) => {
+  setupView.loadMakes = makes => {
     for(let make of makes) {
-      list.append(`<option value="${make}">${make}</option>`)
+      setupView.$makeSelect.append(`<option value="${make}">${make}</option>`)
     }
-    list.append(`<option value="none">Make Not Listed</option>`);
+    setupView.$makeSelect.append(`<option value="none">Make Not Listed</option>`);
   };
 
-  // setupView.loadModels = (models) => {
-  //   for(let model of models) {
-  //     $modelsSelect.append(`<option value="${model}">${model}</option>`)
-  //   }
-  //   $modelsSelect.append(`<option value="none">Model Not Listed</option>`);
-  // };
+  setupView.loadModels = models => {
+    for(let model of models) {
+      setupView.$modelSelect.append(`<option value="${model}">${model}</option>`)
+    }
+    setupView.$modelSelect.append(`<option value="none">Model Not Listed</option>`);
+  };
+
+  setupView.emptySelect = select => {
+    let first = select.children().first();
+    select.empty().append(first);
+    console.log('emptying');
+  };
+
+  // $('select[name="vehicle-make"]').children().first().prop('selected', 'selected')
 
   $(() => {
     /* Page load initializations */
@@ -37,23 +45,32 @@ var app = app || {};
     // Event Listeners
     $yearSelect.on('change', e => {
       let val = e.target.value;
-      module.setup.myCar.year = val;
-      if(val && val !== 'none') {
+      setupView.emptySelect(setupView.$makeSelect);
+      setupView.emptySelect(setupView.$modelSelect);
+      if(val && val !== 'none') { // Year Selected
+        module.setup.myCar.year = val;
         module.setup.getMakes(val);
-        console.log(`Nabbed ${val} makes @ app.setup.makes`);
-      } else if(val) {
-        console.log('Make this hide the select boxes!');
+        console.log(`Nabbed ${val} makes.`);
+      } else { // "Year not listed" or "Select Year" selected
+        delete module.setup.myCar.year;
+        if(val) { // "Year Not listed" selected
+          console.log('Make this hide the select boxes!');
+        }
       }
     });
 
     setupView.$makeSelect.on('change', e => {
       let val = e.target.value;
-      module.setup.myCar.make = val;
-      if(val && val !== 'none') {
+      setupView.emptySelect(setupView.$modelSelect);
+      if(val && val !== 'none') { // Model Selected
+        module.setup.myCar.make = val;
         module.setup.getModels(module.setup.myCar.year, val);
-        console.log(`Nabbed ${module.setup.myCar.year} ${val} models @ app.setup.models`);
-      } else if(val) {
-        console.log('Make this hide the select boxes!');
+        console.log(`Nabbed ${module.setup.myCar.year} ${val} models`);
+      } else { // "Model not listed" or "select model" selected
+        delete module.setup.myCar.make;
+        if(val) { // "Model not listed" selected
+          console.log('Make this hide the select boxes!');
+        }
       }
     });
   });

@@ -12,13 +12,17 @@ var app = app || {};
   setup.myCar = {};
 
 
-  setup.parseXML = xml => module.xmlToJson(xml).menuItems.menuItem.map(obj => obj.text['#text']);
+  setup.parseXML = xml => {
+    let data = module.xmlToJson(xml).menuItems.menuItem;
+    if(!Array.isArray(data)) data = [data];
+    return data.map(obj => obj.text['#text']);
+  };
 
   // Get a list of all available vehicle makes and parse as an array
   setup.getMakes = year => { // eslint-disable-line
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/make?year=${year}`)
       .then(results => {
-        module.setupView.loadSpec(module.setupView.$makeSelect, setup.parseXML(results));
+        module.setupView.loadMakes(setup.parseXML(results));
       }, console.error);
   };
 
@@ -26,7 +30,8 @@ var app = app || {};
   setup.getModels = (year, make) => { // eslint-disable-line
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=${year}&make=${make}`)
       .then(results => {
-        module.setupView.loadSpec(module.setupView.$modelSelect, setup.parseXML(results));
+        console.log(module.xmlToJson(results));
+        module.setupView.loadModels(setup.parseXML(results));
       }, console.error);
   };
 
