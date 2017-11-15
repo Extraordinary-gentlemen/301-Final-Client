@@ -22,7 +22,7 @@ let renderMap = (lat,lng, zoom) => {
       // console.log(results);
       results.forEach((location) => {
         var marker = new google.maps.Marker({
-          position: {location.lat,location.lng},
+          position: location.coords,
           map: map
         })
       });
