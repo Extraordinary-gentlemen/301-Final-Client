@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="vendor/styles/map.css">
   </head>
   <body>
     <header>
@@ -61,10 +62,12 @@
           <button type="submit" name="submit">Find Cheap Gas!</button>
         </label>
         </form>
+    </section>
+      <section id="map-display" class="container">
+        <div id="map"></div>
       </section>
-
-      <section id="gas-data"></section>
-      <section id="about-us">
+      <section id="gas-data" class="container"></section>
+      <section id="about-us" class="container">
         <ul>
           <li>Dustin Mundy</li>
           <li>Joe Waine</li>
@@ -79,9 +82,13 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/javascript" src="vendor/scripts/xmlToJson.js"></script>
     <script type="text/javascript" src="scripts/models/station.js"></script>
     <script type="text/javascript" src="scripts/views/page-view.js"></script>
     <script type="text/javascript" src="scripts/controller/routes.js"></script>
+    <script type="text/javascript" src="scripts/map.js"></script>
+    // TODO: Google Places API KEY EXPOSED
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAol70MnsSZw_h0KX0WfGbpA5JtGRhxW8k&v=3.exp&libraries=visualization"></script>
   </body>
 </html>
