@@ -17,7 +17,7 @@ let renderMap = (lat,lng, zoom) => {
   //   map.setCenter(center)
   // })
 
-  $.get(`/api/v1/markers/${lat},${lng}`)
+  $.get(`https://extraordinary-gentlemen.herokuapp.com/api/v1/markers/${lat},${lng}`)
     .then(results => {
       // console.log(results);
       results.forEach((location) => {
