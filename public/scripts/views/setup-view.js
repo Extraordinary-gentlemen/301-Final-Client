@@ -53,6 +53,7 @@ var app = app || {};
 
     // Event Listeners
     $yearSelect.on('change', e => {
+      window.location.href = '#vehicle-form';
       let val = e.target.value;
       setupView.emptySelect(setupView.$makeSelect);
       setupView.emptySelect(setupView.$modelSelect);
