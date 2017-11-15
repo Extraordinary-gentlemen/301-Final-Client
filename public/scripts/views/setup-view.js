@@ -21,7 +21,6 @@ var app = app || {};
     for(let make of makes) {
       setupView.$makeSelect.append(`<option value="${make}">${make}</option>`)
     }
-    // setupView.$makeSelect.append(`<option value="none">Make Not Listed</option>`);
     setupView.$makeSelect.show();
   };
 
@@ -29,14 +28,14 @@ var app = app || {};
     for(let model of models) {
       setupView.$modelSelect.append(`<option value="${model}">${model}</option>`)
     }
-    // setupView.$modelSelect.append(`<option value="none">Model Not Listed</option>`);
     setupView.$modelSelect.show();
   };
 
   setupView.emptySelect = select => {
-    let first = select.children().first();
-    let second = first.next();
-    select.empty().append(first).append(second);
+    let $first = select.children().first();
+    let $second = $first.next();
+    select.empty().append($first).append($second);
+    $first.prop('selected', true);
   };
 
 
@@ -50,46 +49,46 @@ var app = app || {};
       setupView.emptySelect(setupView.$makeSelect);
       setupView.emptySelect(setupView.$modelSelect);
       setupView.$mpgInput.val('');
+      module.setup.myCar = {};
       if(val && val !== 'none') { // Year Selected
         module.setup.myCar.year = val;
         module.setup.getMakes(val);
-      } else { // "Year not listed" or "Select Year" selected
-        delete module.setup.myCar.year;
-        if(val) { // "Year Not listed" selected
-          console.log('Make this hide the select boxes!');
-        }
+      } else if(val) { // "Year Not listed" selected
+        console.log('Make this hide the select boxes!');
       }
+      console.log(module.setup.myCar); // TODO: take out later
     });
 
     setupView.$makeSelect.on('change', e => {
       let val = e.target.value;
       setupView.emptySelect(setupView.$modelSelect);
       setupView.$mpgInput.val('');
+      module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
         module.setup.myCar.make = val;
         module.setup.getModels(module.setup.myCar.year, val);
-      } else { // "Model not listed" or "select model" selected
-        delete module.setup.myCar.make;
-        if(val) { // "Model not listed" selected
-          console.log('Make this hide the select boxes!');
-        }
+      } else if(val) { // "Model not listed" selected
+        console.log('Make this hide the select boxes!');
       }
+      console.log(module.setup.myCar);
     });
 
     setupView.$modelSelect.on('change', e => {
       let val = e.target.value;
       setupView.$mpgInput.val('');
+      delete module.setup.myCar.model;
+      delete module.setup.myCar.mpg;
       if(val && val !== 'none') { // Model Selected
         module.setup.myCar.model = val;
         module.setup.getCar(module.setup.myCar.year, module.setup.myCar.make, val);
-      } else { // "Model not listed" or "select model" selected
-        delete module.setup.myCar.model;
-        if(val) { // "Model not listed" selected
-          console.log('Make this hide the select boxes!');
-        }
+      } else if(val) { // "Model not listed" selected
+        console.log('Make this hide the select boxes!');
       }
+      console.log(module.setup.myCar);
     });
   });
 
   module.setupView = setupView;
 })(app);
+
+// TODO: On form submit, make sure to grab the most recent value from mpg, in case the user changed it.
