@@ -3,13 +3,6 @@
 // Application Dependencies
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch');
-const fetchJson = require('node-fetch-json');
-const pg = require('pg');
-
-const conString = 'postgres://postgres:1234@localhost:5432/postgres';
-// const conString = 'postgres://localhost:5432';
-const client = new pg.Client(conString);
 
 // Application Setup
 const app = express();
