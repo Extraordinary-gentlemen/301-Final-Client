@@ -4,6 +4,15 @@
 let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com'; // eslint-disable-line
 if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
 
+var pos = {};
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    pos.lat = position.coords.latitude;
+    pos.lng = position.coords.longitude;
+  });
+}
+
 let renderMap = (lat,lng, zoom) => {
   let map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: lat, lng: lng},
