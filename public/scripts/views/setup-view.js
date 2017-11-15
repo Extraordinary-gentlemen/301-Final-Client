@@ -5,22 +5,56 @@ var app = app || {};
 (function(module){ //eslint-disable-line
   // Setup Constants
   const setupView = {};
-  const $yearsSelect = $('select[name="vehicle-year"]');
+  const $yearSelect = $('select[name="vehicle-year"]');
+  setupView.$makeSelect = $('select[name="vehicle-make"]');
+  setupView.$modelSelect = $('select[name="vehicle-model"]');
 
   setupView.loadYears = () => {
-    $yearsSelect.append(`<option value="">Vehicle Year</option>`);
     for(let i = 2018; i > 1983; i--) {
-      $yearsSelect.append(`<option value="${i}">${i}</option>`);
+      $yearSelect.append(`<option value="${i}">${i}</option>`);
     }
-  }
+    $yearSelect.append(`<option value="no-year">Year Not Listed</option>`);
+  };
+
+  setupView.loadSpec = (list, makes) => {
+    for(let make of makes) {
+      list.append(`<option value="${make}">${make}</option>`)
+    }
+    list.append(`<option value="none">Make Not Listed</option>`);
+  };
+
+  // setupView.loadModels = (models) => {
+  //   for(let model of models) {
+  //     $modelsSelect.append(`<option value="${model}">${model}</option>`)
+  //   }
+  //   $modelsSelect.append(`<option value="none">Model Not Listed</option>`);
+  // };
 
   $(() => {
     /* Page load initializations */
     setupView.loadYears();
 
     // Event Listeners
-    $yearsSelect.on('change', e => {
-      if(e.target.value) module.setup.getMakes(e.target.value);
+    $yearSelect.on('change', e => {
+      let val = e.target.value;
+      module.setup.myCar.year = val;
+      if(val && val !== 'none') {
+        module.setup.getMakes(val);
+        console.log(`Nabbed ${val} makes @ app.setup.makes`);
+      } else if(val) {
+        console.log('Make this hide the select boxes!');
+      }
+    });
+
+    setupView.$makeSelect.on('change', e => {
+      let val = e.target.value;
+      module.setup.myCar.make = val;
+      if(val && val !== 'none') {
+        module.setup.getModels(module.setup.myCar.year, val);
+        console.log(`Nabbed ${module.setup.myCar.year} ${val} models @ app.setup.models`);
+      } else if(val) {
+        console.log('Make this hide the select boxes!');
+      }
     });
   });
 
