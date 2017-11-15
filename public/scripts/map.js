@@ -20,10 +20,9 @@ let renderMap = (lat,lng, zoom) => {
   $.get(`/api/v1/markers/${lat},${lng}`)
     .then(results => {
       // console.log(results);
-      results.forEach((coordpair) => {
-        console.log(coordpair);
+      results.forEach((location) => {
         var marker = new google.maps.Marker({
-          position: coordpair,
+          position: {location.lat,location.lng},
           map: map
         })
       });
