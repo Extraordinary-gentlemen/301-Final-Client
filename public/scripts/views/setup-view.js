@@ -38,6 +38,12 @@ var app = app || {};
     $first.prop('selected', true);
   };
 
+  setupView.hideSelects = () => {
+    setupView.$modelSelect.hide();
+    setupView.$makeSelect.hide();
+    module.setup.myCar = {};
+  };
+
 
   // Page load initializations
   $(() => {
@@ -50,27 +56,30 @@ var app = app || {};
       let val = e.target.value;
       setupView.emptySelect(setupView.$makeSelect);
       setupView.emptySelect(setupView.$modelSelect);
+      setupView.$modelSelect.hide();
       setupView.$mpgInput.val('');
       module.setup.myCar = {};
       if(val && val !== 'none') { // Year Selected
         module.setup.myCar.year = val;
         module.setup.getMakes(val);
       } else if(val) { // "Year Not listed" selected
-        console.log('Make this hide the select boxes!');
+        setupView.hideSelects();
+      } else {
+        setupView.$makeSelect.hide();
       }
       console.log(module.setup.myCar); // TODO: take out later
     });
 
     setupView.$makeSelect.on('change', e => {
       let val = e.target.value;
-      setupView.emptySelect(setupView.$modelSelect);
+      setupView.$modelSelect.hide();
       setupView.$mpgInput.val('');
       module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
         module.setup.myCar.make = val;
         module.setup.getModels(module.setup.myCar.year, val);
       } else if(val) { // "Model not listed" selected
-        console.log('Make this hide the select boxes!');
+        setupView.hideSelects();
       }
       console.log(module.setup.myCar);
     });
@@ -84,7 +93,7 @@ var app = app || {};
         module.setup.myCar.model = val;
         module.setup.getCar(module.setup.myCar.year, module.setup.myCar.make, val);
       } else if(val) { // "Model not listed" selected
-        console.log('Make this hide the select boxes!');
+        setupView.hideSelects();
       }
       console.log(module.setup.myCar);
     });

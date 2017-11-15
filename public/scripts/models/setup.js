@@ -70,7 +70,6 @@ var app = app || {};
 })(app);
 
 
-// TODO: jquery hide and show the selects
 // TODO: modify inputs so min number is 0 allow floats (see S.O.)
 // TODO: Look into fancier jQuery for showing the pieces, like slide?
 // TODO: Add some sort of recursive callback for refetching on fail, but increment (max 3 tries)
