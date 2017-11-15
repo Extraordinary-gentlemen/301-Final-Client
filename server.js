@@ -31,7 +31,7 @@ app.get('/api/v1/markers/*', (req, res) => {
   fetchJson(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas+stations&location=${req.params[0]}&radius=40&key=AIzaSyB6PFCWQQvDJQhVpPL6PqM3W7ZcywGO1KU`)
     .then(response => {
       res.send(response.results.map(function(x){
-        return { coords: {lat: x.geometry.location.lat, lng: x.geometry.location.lng}, address: x.formatted_address, name: x.name };
+        return { coords: {lat: x.geometry.location.lat, lng: x.geometry.location.lng}, address: x.formatted_address, name: x.name, place_id: x.place_id };
       }));
     });
 });
