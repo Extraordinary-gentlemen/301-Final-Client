@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Pump Finder" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="extraordinary-gentlemen.github.io/pumpfinder-client/" />
+    <meta property="og:url" content="https://pumpfinder.herokuapp.com/" />
     <meta property="og:image" content="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/matte-white-square-icons-business/124715-matte-white-square-icon-business-gaspump.png" />
     <link href="https://fonts.googleapis.com/css?family=Barlow|Headland+One|Kameron|Lato|Open+Sans|Raleway|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css" type="text/css">
@@ -37,21 +37,19 @@
 
       <section id="vehicle-setup" class="container">
         <form>
-
           <select name="vehicle-year">
             <option value="">Select Year</option>
           </select>
-
           <select name="vehicle-make">
-          <option value="">Select Make</option>
-        </select>
-
-        <select name="vehicle-model">
-          <option value="">Select Model</option>
-        </select>
-
+            <option value="" selected>Select Make</option>
+            <option value="none">Make Not Listed</option>
+          </select>
+          <select name="vehicle-model">
+            <option value="" selected>Select Model</option>
+            <option value="none">Model Not Listed</option>
+          </select>
           <label>
-            Estimated MPG</br>
+            Estimated MPG
             <input type="number" name="vehicle-mpg" required>
           </label>
           <label>
@@ -84,8 +82,8 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/javascript" src="vendor/scripts/xmlToJson.js"></script>
-    <script type="text/javascript" src="scripts/models/station.js"></script>
-    <script type="text/javascript" src="scripts/views/page-view.js"></script>
+    <script type="text/javascript" src="scripts/models/setup.js"></script>
+    <script type="text/javascript" src="scripts/views/setup-view.js"></script>
     <script type="text/javascript" src="scripts/controller/routes.js"></script>
     <script type="text/javascript" src="scripts/map.js"></script>
     // TODO: Google Places API KEY EXPOSED
