@@ -9,6 +9,7 @@ var app = app || {};
   setupView.$makeSelect = $('select[name="vehicle-make"]');
   setupView.$modelSelect = $('select[name="vehicle-model"]');
   setupView.$mpgInput = $('input[name="vehicle-mpg"]');
+  const $noVehicleWarning = $('#no-vehicle-warning');
 
   setupView.loadYears = () => {
     for(let i = 2018; i > 1983; i--) {
@@ -42,6 +43,7 @@ var app = app || {};
     setupView.$modelSelect.hide();
     setupView.$makeSelect.hide();
     setupView.$yearSelect.children().first().prop('selected', true);
+    $noVehicleWarning.show();
     module.setup.myCar = {};
   };
 
@@ -49,12 +51,14 @@ var app = app || {};
   // Page load initializations
   $(() => {
     setupView.loadYears();
-    setupView.$makeSelect.hide();
-    setupView.$modelSelect.hide();
+    setupView.$makeSelect.hide().removeClass('hide');
+    setupView.$modelSelect.hide().removeClass('hide');
+    $noVehicleWarning.hide().removeClass('hide');
 
     // Event Listeners
     setupView.$yearSelect.on('change', e => {
       window.location.href = '#vehicle-form';
+      $noVehicleWarning.hide();
       let val = e.target.value;
       setupView.emptySelect(setupView.$makeSelect);
       setupView.emptySelect(setupView.$modelSelect);
@@ -74,7 +78,8 @@ var app = app || {};
 
     setupView.$makeSelect.on('change', e => {
       let val = e.target.value;
-      setupView.$modelSelect.hide();
+      setupView.emptySelect(setupView.$modelSelect);
+      // setupView.$modelSelect.hide();
       setupView.$mpgInput.val('');
       module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
