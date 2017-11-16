@@ -3,10 +3,6 @@
 var app = app || {};
 
 (function(module) {
-  // Set the __API_URL__ for requests to the server
-  // let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com'; // eslint-disable-line
-  // if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
-
   // Establishing the setup object
   const setup = {};
   setup.myCar = {};
@@ -61,10 +57,6 @@ var app = app || {};
         module.setupView.$mpgInput.val(setup.myCar.mpg.avg);
       }, console.error)
   };
-
-  // Test route to check communication with the API
-  // $.get(`${__API_URL__}/test`)
-  //   .then( console.log, console.error);
 
   module.setup = setup;
 })(app);
