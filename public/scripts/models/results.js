@@ -8,22 +8,22 @@ let debug = true;
   let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com';
   if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
 
-  let pos = {};
+  // let pos = {};
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      pos.lat = position.coords.latitude;
-      pos.lng = position.coords.longitude;
-      // module.queryApi(pos.lat, pos.lng);
-    });
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     pos.lat = position.coords.latitude;
+  //     pos.lng = position.coords.longitude;
+  //     // module.queryApi(pos.lat, pos.lng);
+  //   });
+  // }
 
   // Debug stuffs
-  if(debug){
-    lat = 47.6182513;
-    lng = -122.35406;
-    module.setup.myCar = {gallons:15, mpg:32};
-  }
+  // if(debug){
+  //   lat = 47.6182513;
+  //   lng = -122.35406;
+  //   module.setup.myCar = {gallons:15, mpg:32};
+  // }
   module.queryApi = (lat,lng) => {
     if(debug) console.log('API Query Starting');
     $.get(`${__API_URL__}/api/v1/markers/${lat},${lng}`)
@@ -71,7 +71,7 @@ let debug = true;
       storeArray.totalCost = storeArray.buyingCost + storeArray.travelcost;
     })
 
-    if(debug) console.log('  Sorting stores by total cost');
+    // if(debug) console.log('  Sorting stores by total cost');
     // Sort the stores.
     // if "one" minus "theOther" is less than 0, it means that "one" is smaller than "theOther".
     // "one" sorts before "theOther".
@@ -79,16 +79,16 @@ let debug = true;
     // "one" sorts after "theOther".
     module.allStores.sort((one,theOther) => one.totalCost - theOther.totalCost)
 
-    if(debug) console.log('  Shortening store list to just five entries');
+    // if(debug) console.log('  Shortening store list to just five entries');
     // this takes the first 5 indexes which should be the 5 smallest total costs.
     module.topStores = module.allStores.slice(0,5)
 
-    if(debug) console.log('  Formatting data and populating store list on page');
+    // if(debug) console.log('  Formatting data and populating store list on page');
     // for each of the top stores, we build an object with keys matching the handlebar placeholders in the template.
     // then append them to #store-list.
     module.topStores.forEach(storeArray => {
       let format = Handlebars.compile($('#store-display-template').text());
-      let buyingCost = Math.floor(storeArray.buyingCost * 100) / 100
+      // let buyingCost = Math.floor(storeArray.buyingCost * 100) / 100
       let data = {
         preTravelCost: Math.round(storeArray.buyingCost * 100) / 100,
         postTravelCost: Math.round(storeArray.totalCost * 100) / 100,
@@ -128,7 +128,7 @@ let debug = true;
     if(debug) console.log('  For each store, add a marker to the map.');
     module.allStores.forEach((store) => {
 
-      var travelCost = store.travelcost * 100;
+      // var travelCost = store.travelcost * 100;
 
       var windowContent = `<p>${store.name}</p><br><span>distance: ${store.distance} miles<br>duration: ${store.duration}<br>price (regular): $${store.fuelCost}<br>travel cost: $${store.travelcost.toFixed(2)}<span>`;
 
