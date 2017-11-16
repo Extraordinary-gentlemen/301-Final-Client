@@ -88,6 +88,7 @@ let debug = true;
     // then append them to #store-list.
     module.topStores.forEach(storeArray => {
       let format = Handlebars.compile($('#store-display-template').text());
+      let buyingCost = Math.floor(storeArray.buyingCost * 100) / 100
       let data = {
         preTravelCost: Math.round(storeArray.buyingCost * 100) / 100,
         postTravelCost: Math.round(storeArray.totalCost * 100) / 100,
@@ -127,22 +128,23 @@ let debug = true;
     if(debug) console.log('  For each store, add a marker to the map.');
     module.allStores.forEach((store) => {
 
+      var travelCost = store.travelcost * 100;
 
       var windowContent = `<p>${store.name}</p><br><span>distance: ${store.distance} miles<br>duration: ${store.duration}<br>price (regular): $${store.fuelCost}<br>travel cost: $${store.travelcost.toFixed(2)}<span>`;
 
       // var marker = new google.maps.Marker({ TODO Original code of line below
       var infowindow = new google.maps.InfoWindow({
-        content: windowContent
-      });
+                content: windowContent
+              });
 
-      var marker = new window.google.maps.Marker({
+    var marker = new window.google.maps.Marker({
         position: store.coords,
         map: module.map
       });
 
       marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
+           infowindow.open(map, marker);
+        });
     });
   }
 })(app);
