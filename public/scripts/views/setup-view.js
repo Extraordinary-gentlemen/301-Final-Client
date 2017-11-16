@@ -5,16 +5,16 @@ var app = app || {};
 (function(module){ //eslint-disable-line
   // Setup Constants
   const setupView = {};
-  const $yearSelect = $('select[name="vehicle-year"]');
+  setupView.$yearSelect = $('select[name="vehicle-year"]');
   setupView.$makeSelect = $('select[name="vehicle-make"]');
   setupView.$modelSelect = $('select[name="vehicle-model"]');
   setupView.$mpgInput = $('input[name="vehicle-mpg"]');
 
   setupView.loadYears = () => {
     for(let i = 2018; i > 1983; i--) {
-      $yearSelect.append(`<option value="${i}">${i}</option>`);
+      setupView.$yearSelect.append(`<option value="${i}">${i}</option>`);
     }
-    $yearSelect.append(`<option value="none">Year Not Listed</option>`);
+    setupView.$yearSelect.append(`<option value="none">Year Not Listed</option>`);
   };
 
   setupView.loadMakes = makes => {
@@ -41,6 +41,7 @@ var app = app || {};
   setupView.hideSelects = () => {
     setupView.$modelSelect.hide();
     setupView.$makeSelect.hide();
+    setupView.$yearSelect.children().first().prop('selected', true);
     module.setup.myCar = {};
   };
 
@@ -52,7 +53,7 @@ var app = app || {};
     setupView.$modelSelect.hide();
 
     // Event Listeners
-    $yearSelect.on('change', e => {
+    setupView.$yearSelect.on('change', e => {
       window.location.href = '#vehicle-form';
       let val = e.target.value;
       setupView.emptySelect(setupView.$makeSelect);
