@@ -57,12 +57,13 @@ var app = app || {};
       }, console.error)
   };
 
+  $('#vehicle-setup form').on('submit', e => {
+    e.preventDefault();
+    // TODO: FINISH!
+  });
+
   module.setup = setup;
 })(app);
 
-
-// TODO: modify inputs so min number is 0 allow floats (see S.O.)
-// TODO: Look into fancier jQuery for showing the pieces, like slide?
-// TODO: Add some sort of recursive callback for refetching on fail, but increment (max 3 tries)
 // TODO: event handler on form submit
 // TODO: throw in a little page.js action
