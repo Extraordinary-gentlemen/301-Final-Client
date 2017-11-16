@@ -57,17 +57,5 @@ var app = app || {};
       }, console.error)
   };
 
-  $('#vehicle-setup form').on('submit', e => {
-    e.preventDefault();
-    setup.myCar.mpg = module.setupView.$mpgInput.val();
-    setup.myCar.gal = $('input[name="gas-gallons"]').val();
-    console.log(setup.myCar);
-    // 3. grab user location
-    // 4. Fire off request for location data from Joe
-  });
-
   module.setup = setup;
 })(app);
-
-// TODO: event handler on form submit
-// TODO: throw in a little page.js action

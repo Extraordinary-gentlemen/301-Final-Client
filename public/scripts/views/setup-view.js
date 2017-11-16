@@ -101,7 +101,25 @@ var app = app || {};
     });
   });
 
+  $('#vehicle-setup form').on('submit', e => {
+    e.preventDefault();
+    module.setup.myCar.mpg = module.setupView.$mpgInput.val();
+    module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
+    console.log(module.setup.myCar);
+    localStorage.myCar = module.setup.myCar;
+    let message = `To find the cheapest gas stations, we need to use your location.
+
+      Do you consent?`;
+    if(confirm(message)) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        module.queryApi(lat, lng);
+      });
+    } else {
+      console.log('No GPS data.');
+    }
+  });
+
   module.setupView = setupView;
 })(app);
-
-// TODO: On form submit, make sure to grab the most recent value from mpg, in case the user changed it.
