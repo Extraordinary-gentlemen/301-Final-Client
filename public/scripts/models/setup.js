@@ -45,14 +45,13 @@ var app = app || {};
   setup.getMPG = id => { // eslint-disable-line
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/${id}`)
       .then(results => {
-        // TODO: Some cars return multiple options. Do we want to take that into account? Currently ignored.
         let carData = module.xmlToJson(results).vehicle;
         let cityMpg = Number(carData.city08['#text']);
         let hwyMpg = Number(carData.highway08['#text']);
         setup.myCar.mpg = {
           city: cityMpg,
           hwy: hwyMpg,
-          avg: (cityMpg + hwyMpg) / 2
+          avg: Math.round(((cityMpg + hwyMpg) / 2) * 10) / 10
         };
         module.setupView.$mpgInput.val(setup.myCar.mpg.avg);
       }, console.error)

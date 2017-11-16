@@ -8,13 +8,13 @@ var app = app || {};
 
   let pos = {};
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      pos.lat = position.coords.latitude;
-      pos.lng = position.coords.longitude;
-      renderMap(pos.lat, pos.lng, 13);
-    });
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     pos.lat = position.coords.latitude;
+  //     pos.lng = position.coords.longitude;
+  //     renderMap(pos.lat, pos.lng, 13);
+  //   });
+  // }
 
   let renderMap = (lat,lng, zoom) => {
     // let map = new google.maps.Map(document.getElementById('map'), { TODO Original code of line below
