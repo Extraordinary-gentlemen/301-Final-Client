@@ -33,10 +33,10 @@
       </nav> -->
       <script type="text/x-handlebars-template" id="store-display-template">
         <ul>
-          <li class="pre-travel-cost">{{pre-travel-cost}}</li>
-          <li class="post-travel-cost">{{post-travel-cost}}</li>
-          <li class="travel-time">{{travel-time}}</li>
-          <li class="station-display">{{station-display}}</li>
+          <li class="pre-travel-cost">{{preTravelCost}}</li>
+          <li class="post-travel-cost">{{postTravelCost}}</li>
+          <li class="travel-time">{{travelTime}}</li>
+          <li class="station-display">{{stationDisplay}}</li>
         </ul>
       </script>
     </header>
@@ -70,8 +70,7 @@
         </label>
         </form>
     </section>
-      <section id="map-display" class="container">
-        <div id="map"></div>
+      <section id="result-display" class="container">
         <ul class="store-list">
           <li>
             <ul>
@@ -82,6 +81,7 @@
             </ul>
           </li>
         </ul>
+        <div id="map"></div>
       </section>
       <section id="about-us"  class="container">
         <ul>
@@ -105,7 +105,7 @@
     <script type="text/javascript" src="scripts/models/setup.js"></script>
     <script type="text/javascript" src="scripts/views/setup-view.js"></script>
     <script type="text/javascript" src="scripts/controller/routes.js"></script>
-    <script type="text/javascript" src="scripts/map.js"></script>
+    <script type="text/javascript" src="scripts/models/results.js"></script>
     <!-- // TODO: Google Places API KEY EXPOSED -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAol70MnsSZw_h0KX0WfGbpA5JtGRhxW8k&v=3.exp&libraries=visualization"></script>
   </body>
