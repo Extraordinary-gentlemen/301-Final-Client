@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
     <link rel="stylesheet" href="vendor/styles/map.css">
+    <script type="text/x-handlebars-template" id="store-display-template">
+      <ul>
+        <li class="pre-travel-cost">{{preTravelCost}}</li>
+        <li class="post-travel-cost">{{postTravelCost}}</li>
+        <li class="travel-time">{{travelTime}}</li>
+        <li class="station-display">{{stationDisplay}}</li>
+      </ul>
+    </script>
   </head>
   <body>
     <header>
@@ -64,14 +72,14 @@
           <button class="back"><a href="index.html">Back</a></button>
         </label>
         <ul class="store-list">
-            <li>
-              <ul>
-                <li id="pre-travel-cost">You are Spending:</li>
-                <li id="post-travel-cost">After Travel Cost:</li>
-                <li id="travel-time">Your Travel Time:</li>
-                <li id="station-display">Buying From:</li>
-              </ul>
-            </li>
+          <li>
+            <ul>
+              <li id="pre-travel-cost">You are Spending:</li>
+              <li id="post-travel-cost">After Travel Cost:</li>
+              <li id="travel-time">Your Travel Time:</li>
+              <li id="station-display">Buying From:</li>
+            </ul>
+          </li>
         </ul>
         <div id="map"></div>
       </section>
@@ -120,7 +128,7 @@
     <script type="text/javascript" src="scripts/models/setup.js"></script>
     <script type="text/javascript" src="scripts/views/setup-view.js"></script>
     <script type="text/javascript" src="scripts/controller/routes.js"></script>
-    <script type="text/javascript" src="scripts/models/map.js"></script>
+    <script type="text/javascript" src="scripts/models/results.js"></script>
     <!-- // TODO: Google Places API KEY EXPOSED -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAol70MnsSZw_h0KX0WfGbpA5JtGRhxW8k&v=3.exp&libraries=visualization"></script>
   </body>
