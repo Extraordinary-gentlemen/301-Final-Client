@@ -80,8 +80,11 @@ var app = app || {};
 
   let renderMap = (lat,lng) => {
     // let map = new google.maps.Map(document.getElementById('map'), { TODO Original code of line below
+
+    //build map object out of google's crazy code
     module.map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: lat, lng: lng},
+      //TODO: zoom level should be dynamic and returned by API
       zoom: 12,
       mapTypeId: 'roadmap',
       zoomControl: true,
