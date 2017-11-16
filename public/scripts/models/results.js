@@ -12,34 +12,34 @@ var app = app || {};
     navigator.geolocation.getCurrentPosition(function(position) {
       pos.lat = position.coords.latitude;
       pos.lng = position.coords.longitude;
-      queryApi(pos.lat, pos.lng);
+      module.queryApi(pos.lat, pos.lng);
     });
   }
 
-  let queryApi = (lat,lng) => {
+  module.queryApi = (lat,lng) => {
     $.get(`${__API_URL__}/api/v1/markers/${lat},${lng}`)
       .then(results => {
         module.allStores = results;
-        populateStoresList();
-        renderMap(lat,lng);
-        addMarkers();
+        module.populateStoresList();
+        module.renderMap(lat,lng);
+        module.addMarkers();
       });
   }
 
-/*    API Query returns list of 20 objects representing gas stations. Format below.
-  [
-    {
-      coords: {lat:#,lng:#},
-      address: 'string',
-      name: 'string',
-      fuelCost: #,
-      distance: #,
-      travelTime: #
-    },
-  ]
-*/
+  /*    API Query returns list of 20 objects representing gas stations. Format below.
+    [
+      {
+        coords: {lat:#,lng:#},
+        address: 'string',
+        name: 'string',
+        fuelCost: #,
+        distance: #,
+        travelTime: #
+      },
+    ]
+  */
 
-  let populateStoresList = () => {
+  module.populateStoresList = () => {
 
     // Get gallons and average mpg from data retrieved earlier.
     let gallonsBuying = module.setup.myCar.gallons
@@ -78,7 +78,7 @@ var app = app || {};
 
   }
 
-  let renderMap = (lat,lng) => {
+  module.renderMap = (lat,lng) => {
     // let map = new google.maps.Map(document.getElementById('map'), { TODO Original code of line below
 
     //build map object out of google's crazy code
@@ -101,7 +101,7 @@ var app = app || {};
     // })
   }
 
-  let addMarkers = () => {
+  module.addMarkers = () => {
     module.allStores.forEach((store) => {
       // var marker = new google.maps.Marker({ TODO Original code of line below
       new window.google.maps.Marker({
