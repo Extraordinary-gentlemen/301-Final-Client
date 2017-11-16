@@ -4,7 +4,7 @@
 }
 
 main {
-  background-color: rgb(219, 219, 219);
+  background-color: #4a3032;
 }
 
 .clear {
@@ -38,27 +38,64 @@ header h1 {
 }
 
 main h1 {
+  color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.3em;
+  font-size: 2.1em;
   margin: 0 auto;
-  padding: 1em;
+  padding: 1em 0 .2em;
   text-align: center;
+  text-shadow: 2px 2px #000;
 }
 
 main h2 {
-font-size: 1.2em;
+  color: white;
+font-size: 1.3em;
 font-family: 'Montserrat', sans-serif;
   text-align: center;
+  padding: 1em;
+  margin-bottom: .3em;
+  text-shadow: 2px 2px #000;
 }
+
+main h3 {
+  color: white;
+font-size: 1.5em;
+font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 1em;
+
+  text-shadow: 2px 2px #000;
+}
+
+footer p {
+  color: white;
+  font-size: .9em;
+  font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 1em;
+    margin-bottom: .3em;
+
+}
+
+#vehicle-setup {
+  background: linear-gradient(#44070c, #861818);
+  color: black;
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+}
+
 
 .container {
     background: linear-gradient(#44070c, #861818);
-    color: black;
+    color: white;
     padding: 30px;
     margin: 0 auto;
     width: 90%;
-    max-width: 400px;
-    border-radius: 20px;
+
+    border-radius: 10px;
 }
 
 .container form label {
@@ -129,6 +166,15 @@ button:hover {
   color: white;
 }
 
+.back {
+  float: right;
+}
+
+.store-list li ul li {
+  font-size: 1.3em;
+  padding: .2em
+}
+
 footer {
   background-color: black;
   display: inline-block;
@@ -137,19 +183,39 @@ footer {
 
 footer ul li {
   color: white;
+
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1028px) {
+
+body {
+  min-height: 1040px;
+}
+
+video  {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background: url("img/screen.jpg")no-repeat;
+  background-size: cover;
+  z-index: -100;
+}
 
 .contentmaxwidth {
   max-width: 1120px;
   margin: 0 auto;
 }
 
+main h1 {
+  color: white;
+}
+
 main h2 {
 font-size: 1.5em;
 font-family: 'Montserrat', sans-serif;
   text-align: center;
+  color: white;
 }
 
 

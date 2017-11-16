@@ -33,20 +33,23 @@
       </nav> -->
     </header>
     <main>
+
       <h1>Welcome to Pump Finder</h1>
-      <h2 class="contentmaxwidth">To start, just select the year of your vehicle below. Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.</h2>
+      <h2 class="contentmaxwidth">Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.</h2>
+      <h2 class="contentmaxwidth">To start, just select the year of your vehicle below.</h2>
+
 
       <section id="vehicle-setup" class="container">
         <form>
           <select name="vehicle-year">
-            <option value="">Select Year</option>
+            <option value="">Vehicle Year</option>
           </select>
           <select name="vehicle-make">
-            <option value="" selected>Select Make</option>
+            <option value="" selected>Vehicle Make</option>
             <option value="none">Make Not Listed</option>
           </select>
           <select name="vehicle-model">
-            <option value="" selected>Select Model</option>
+            <option value="" selected>Vehicle Model</option>
             <option value="none">Model Not Listed</option>
           </select>
           <label>
@@ -62,10 +65,25 @@
         </label>
         </form>
     </section>
-      <section id="map-display" class="container">
+
+
+      <section id="result-display" class="container">
+        <label>
+        <button class="back">Back</button>
+      </label>
+      <ul class="store-list">
+          <li>
+            <ul>
+              <li id="pre-travel-cost">You are Spending:</li>
+              <li id="post-travel-cost">After Travel Cost:</li>
+              <li id="travel-time">Your Travel Time:</li>
+              <li id="station-display">Buying From:</li>
+            </ul>
+          </li>
+        </ul>
         <div id="map"></div>
       </section>
-      <section id="gas-data" class="container"></section>
+
       <section id="about-us"  class="container">
         <ul>
           <li>Dustin Mundy</li>
@@ -74,10 +92,12 @@
           <li>Robert Reed</li>
         </ul>
       </section>
+      <h3>About Us</h3>
     </main>
     <footer>
-
-      &copy;2017 Pump Finder, Inc.</footer>
+      <p>
+        &copy;2017 Pump Finder, Inc.
+      </p></footer>
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
