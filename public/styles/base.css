@@ -1,10 +1,9 @@
-
 * {
   box-sizing: border-box;
 }
 
 main {
-  background-color: rgb(219, 219, 219);
+  background-color: #4a3032;
 }
 
 .clear {
@@ -13,6 +12,11 @@ main {
 
 img {
   max-width: 100%;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 header {
@@ -38,27 +42,81 @@ header h1 {
 }
 
 main h1 {
+  color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.3em;
+  font-size: 2.1em;
   margin: 0 auto;
-  padding: 1em;
+  padding: 1em 0 .2em;
   text-align: center;
+  text-shadow: 2px 2px #000;
 }
 
 main h2 {
-font-size: 1.2em;
-font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 1.3em;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
+  padding: 1em;
+  margin-bottom: .3em;
+  text-shadow: 2px 2px #000;
+}
+
+main h3 {
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 1em;
+  text-shadow: 2px 2px #000;
+}
+
+footer p {
+  color: white;
+  font-size: .9em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 1em;
+  margin-bottom: .3em;
+}
+
+img.photo {
+  display: block;
+  border-radius: 200px;
+  margin: 0px auto 20px;
+}
+
+.about p {
+  font-size: 1.1em;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.1em;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #fff;
+  margin: 3em auto;
+  width: 26em;
+}
+
+#vehicle-setup {
+  background: linear-gradient(#44070c, #861818);
+  color: black;
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
 }
 
 .container {
-    background: linear-gradient(#44070c, #861818);
-    color: black;
-    padding: 30px;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 20px;
+  background: linear-gradient(#44070c, #861818);
+  color: white;
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 10px;
 }
 
 .container form label {
@@ -77,44 +135,43 @@ main form select {
 }
 
 main form label {
-
   text-align: center;
 }
 
 input[type=text], select {
-    width: 9em;
-    padding: 7px 7px;
-    margin: 10px auto;
-    border: 2px solid rgb(121, 4, 13);
-    border-radius: 7px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1.3em;
+  width: 9em;
+  padding: 7px 7px;
+  margin: 10px auto;
+  border: 2px solid rgb(121, 4, 13);
+  border-radius: 7px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.3em;
 }
 
 input[type=text], input {
-    width: 8em;
-    padding: 2px 2px;
-    margin: 10px auto;
-    border: 2px solid rgb(121, 4, 13);
-    border-radius: 7px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1.3em;
+  width: 8em;
+  padding: 2px 2px;
+  margin: 10px auto;
+  border: 2px solid rgb(121, 4, 13);
+  border-radius: 7px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.3em;
 }
 
 input:focus, textarea:focus, select:focus {
-outline-offset: 0px !important;
-outline: none !important;
-box-shadow: 0 0 1px 1px red;
-border: 2px solid rgb(121, 4, 13);
+  outline-offset: 0px !important;
+  outline: none !important;
+  box-shadow: 0 0 1px 1px red;
+  border: 2px solid rgb(121, 4, 13);
 }
 
-label button {
+button {
   color: white;
   font-size: 1.2em;
   font-family: 'Lato', sans-serif;
-  display:inline-block;
+  display: inline-block;
   border: solid 1px white;
   border-radius: 20px;
   text-align: center;
@@ -127,6 +184,16 @@ label button {
 button:hover {
   background: linear-gradient(#44070c, #bb2020);
   color: white;
+  cursor: pointer;
+}
+
+.back {
+  float: right;
+}
+
+.store-list li ul li {
+  font-size: 1.3em;
+  padding: .2em
 }
 
 footer {
@@ -139,22 +206,30 @@ footer ul li {
   color: white;
 }
 
-@media only screen and (min-width: 768px) {
-
-.contentmaxwidth {
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-main h2 {
-font-size: 1.5em;
-font-family: 'Montserrat', sans-serif;
-  text-align: center;
-}
-
-
-
-
-
-
+@media only screen and (min-width: 1028px) {
+  body {
+    min-height: 1040px;
+  }
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    background: url("img/screen.jpg")no-repeat;
+    background-size: cover;
+    z-index: -100;
+  }
+  .contentmaxwidth {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  main h1 {
+    color: white;
+  }
+  main h2 {
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+  }
 }

@@ -23,18 +23,12 @@
       <a id="logo" href="index.html"><img class="left" src="img/logo.png" alt="Pumpfinder logo" height="100"></a>
 
       <h1>Pump Finder</h1>
-      <!-- <div class="icon-menu"></div>
-      <nav>
-        <ul>
-          <li>Setup</li>
-          <li>Find Gas</li>
-          <li>About Us</li>
-        </ul>
-      </nav> -->
     </header>
     <main>
+
       <h1>Welcome to Pump Finder</h1>
-      <h2 class="contentmaxwidth">To start, just select the year of your vehicle below. Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.</h2>
+      <h2 class="contentmaxwidth">Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.</h2>
+      <h2 class="contentmaxwidth">To start, just select the year of your vehicle below.</h2>
       <a id="vehicle-form">
 
       <section id="vehicle-setup" class="container">
@@ -63,23 +57,59 @@
           <button type="submit" name="submit">Find Cheap Gas!</button>
         </label>
         </form>
-    </section>
-      <section id="map-display" class="container">
+      </section>
+
+      <section id="result-display" class="container">
+        <label>
+          <button class="back"><a href="index.html">Back</a></button>
+        </label>
+        <ul class="store-list">
+            <li>
+              <ul>
+                <li id="pre-travel-cost">You are Spending:</li>
+                <li id="post-travel-cost">After Travel Cost:</li>
+                <li id="travel-time">Your Travel Time:</li>
+                <li id="station-display">Buying From:</li>
+              </ul>
+            </li>
+        </ul>
         <div id="map"></div>
       </section>
-      <section id="gas-data" class="container"></section>
+
       <section id="about-us"  class="container">
-        <ul>
-          <li>Dustin Mundy</li>
-          <li>Joe Waine</li>
-          <li>Adrian Hawk</li>
-          <li>Robert Reed</li>
-        </ul>
+        <section class="about contentmaxwidth">
+          <h2>Dustin Mundy</h2>
+          <img class="photo" src="img/aqh.jpg" alt="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
+        </section>
+        <section class="about contentmaxwidth">
+          <hr />
+          <h2>Joe Waine</h2>
+          <img class="photo" src="img/aqh.jpg" alt="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
+        </section>
+        <section class="about contentmaxwidth">
+          <hr />
+          <h2>Adrian Hawk</h2>
+          <img class="photo" src="img/aqh.jpg" alt="">
+          <p>My original backgound comes in the form of Bartending (a distant memory) and serving in the U. S. NAVY. My service had numerous roles ~ OPERATIONS - ANALYST - INSTRUCTOR - LAW ENFORCEMENT - VBSS TEAMS. After I left the military, I took a position as an IT at the Tri-Lakes Board of REALTORS in SW Missouri. Then took on a role as an IT for HomeServices of America (A Berkshire Hathaway Affiliate) managing 5 offices in the Table Rock Lake area of SW Missouri. While helping REALTORS with their websites and building a couple for them, as well, I found I wanted to switch careers. I moved to the NW to surround myself in the Web Dev world and completed an Associate of Applied Science in Web Dev and Design in Portland. Now, I'm here at Code Fellows to get serious about coding.</p>
+        </section>
+        <section class="about contentmaxwidth">
+          <hr />
+          <h2>Robert Reed</h2>
+          <img class="photo" src="img/aqh.jpg" alt="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
+        </section>
+        <hr />
       </section>
+
+      <h3><a href="index.html">About Us</a></h3>
     </main>
     <footer>
-
-      &copy;2017 Pump Finder, Inc.</footer>
+      <p>
+        &copy;2017 Pump Finder, Inc.
+      </p>
+    </footer>
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
