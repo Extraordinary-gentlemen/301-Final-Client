@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
     <link rel="stylesheet" href="vendor/styles/map.css">
+    <script type="text/x-handlebars-template" id="store-display-template">
+      <ul>
+        <li class="pre-travel-cost">{{preTravelCost}}</li>
+        <li class="post-travel-cost">{{postTravelCost}}</li>
+        <li class="travel-time">{{travelTime}}</li>
+        <li class="station-display">{{stationDisplay}}</li>
+      </ul>
+    </script>
   </head>
   <body>
     <header>
@@ -31,14 +39,6 @@
           <li>About Us</li>
         </ul>
       </nav> -->
-      <script type="text/x-handlebars-template" id="store-display-template">
-        <ul>
-          <li class="pre-travel-cost">{{preTravelCost}}</li>
-          <li class="post-travel-cost">{{postTravelCost}}</li>
-          <li class="travel-time">{{travelTime}}</li>
-          <li class="station-display">{{stationDisplay}}</li>
-        </ul>
-      </script>
     </header>
     <main>
       <h1>Welcome to Pump Finder</h1>
@@ -71,7 +71,7 @@
         </form>
     </section>
       <section id="result-display" class="container">
-        <ul class="store-list">
+        <ul id="store-list">
           <li>
             <ul>
               <li id="pre-travel-cost">You are Spending</li>
