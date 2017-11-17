@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: black;
+}
+
+
 main {
   background-color: #4a3032;
 }
@@ -212,9 +217,9 @@ footer ul li {
 }
 
 @media only screen and (min-width: 1028px) {
-  body {
+  /*body {
     min-height: 1040px;
-  }
+  }*/
   video {
     min-width: 100%;
     min-height: 100%;
