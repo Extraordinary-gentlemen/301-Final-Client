@@ -63,6 +63,7 @@ var app = app || {};
   setupView.setSavedState = () => {
     if(!localStorage.myCar) return;
     let savedData = JSON.parse(localStorage.myCar);
+    module.setup.myCar = savedData;
     if(savedData.make) {
       setupView.$yearSelect.children().each(function() {
         if($(this).val() === savedData.year) {
@@ -146,7 +147,7 @@ var app = app || {};
       } else {
         let loc = '';
         while(!loc || !loc.replace(/ /g, '') || null) {
-          loc = prompt('Where ya at?');
+          loc = prompt('Where will you be buying gas?');
         }
         setupView.getUserInput(encodeURI(loc.trim()));
       }
