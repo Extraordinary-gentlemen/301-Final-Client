@@ -78,7 +78,6 @@ var app = app || {};
     }
   };
 
-
   // Page load initializations
   $(() => {
     setupView.loadYears();
@@ -156,7 +155,6 @@ var app = app || {};
     });
 
     setupView.setSavedState();
-
   });
   module.setupView = setupView;
 })(app);
