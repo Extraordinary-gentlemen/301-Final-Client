@@ -121,6 +121,10 @@ var app = app || {};
         let lng = position.coords.longitude;
         module.queryApi(lat, lng);
       });
+      $('#store-list').empty();
+      $('#store-list').next().remove();
+      $('#result-display').append('<div id="map"></div>');
+      // $('#store-list, #map').empty();
     } else {
       console.log('No GPS data.');
     }

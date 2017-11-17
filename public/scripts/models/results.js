@@ -20,6 +20,7 @@ let debug = true;
         module.renderMap(lat,lng);
         if(debug) console.log('Adding Markers');
         module.addMarkers();
+        page('/results');
       }
         ,
       err => {
