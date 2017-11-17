@@ -60,6 +60,23 @@ var app = app || {};
       }, console.error);
   }
 
+  setupView.setSavedState = () => {
+    let savedData = JSON.parse(localStorage.myCar);
+    if(savedData.make) {
+      setupView.$yearSelect.children().each(function() {
+        if($(this).val() === savedData.year) {
+          $(this).prop('selected', true);
+        }
+      });
+      module.setup.getMakes(savedData.year);
+      app.setupView.setNext = true;
+    } else if(savedData && !savedData.make) {
+      // TODO: Fix flashy warning glitch
+      $noVehicleWarning.removeClass('hide').show();
+      setupView.$mpgInput.val(savedData.mpg);
+    }
+  };
+
 
   // Page load initializations
   $(() => {
@@ -113,29 +130,32 @@ var app = app || {};
         setupView.hideSelects();
       }
     });
-  });
 
-  $('#vehicle-setup form').on('submit', e => {
-    e.preventDefault();
-    module.setup.myCar.mpg = module.setupView.$mpgInput.val();
-    module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
-    localStorage.myCar = JSON.stringify(module.setup.myCar);
-    let message = `May we use your location to find your cheap gas?`;
-    if(confirm(message)) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        module.lat = position.coords.latitude;
-        module.lng = position.coords.longitude;
-        module.queryApi(module.lat, module.lng);
-      });
-    } else {
-      let loc = '';
-      while(!loc || !loc.replace(/ /g, '') || null) {
-        loc = prompt('Where ya at?');
+    $('#vehicle-setup form').on('submit', e => {
+      e.preventDefault();
+      module.setup.myCar.mpg = module.setupView.$mpgInput.val();
+      module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
+      localStorage.myCar = JSON.stringify(module.setup.myCar);
+      let message = `May we use your location to find your cheap gas?`;
+      if(confirm(message)) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          module.lat = position.coords.latitude;
+          module.lng = position.coords.longitude;
+          module.queryApi(module.lat, module.lng);
+        });
+      } else {
+        let loc = '';
+        while(!loc || !loc.replace(/ /g, '') || null) {
+          loc = prompt('Where ya at?');
+        }
+        setupView.getUserInput(encodeURI(loc.trim()));
       }
-      setupView.getUserInput(encodeURI(loc.trim()));
-    }
-    $('#store-list, #map').empty();
-  });
+      $('#store-list, #map').empty();
+      $('#saved-car').hide();
+    });
 
+    setupView.setSavedState();
+
+  });
   module.setupView = setupView;
 })(app);
