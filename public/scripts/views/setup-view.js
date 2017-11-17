@@ -137,7 +137,7 @@ var app = app || {};
       module.setup.myCar.mpg = module.setupView.$mpgInput.val();
       module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
       localStorage.myCar = JSON.stringify(module.setup.myCar);
-      let message = `May we use your location to find your cheap gas?`;
+      let message = `May we use your location to find you cheap gas?`;
       if(confirm(message)) {
         navigator.geolocation.getCurrentPosition(function(position) {
           module.lat = position.coords.latitude;

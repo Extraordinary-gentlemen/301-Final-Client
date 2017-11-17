@@ -28,15 +28,29 @@
   </head>
   <body>
     <header>
-      <a id="logo" href="/"><img class="left" src="img/gas-pump.svg" alt="Pumpfinder logo" height="60"></a>
-
-      <h1>Pump Finder</h1>
-            <!-- <h2><a href="/about">About Us</a></h2> -->
+      <a id="logo" href="/">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;overflow: hidden;
+    height: 43px;
+    margin-top: 13px;
+    margin-right: 16px;
+    margin-left: 20px;
+    float: left;" xml:space="preserve">
+        <g>
+            <path class="st0" d="M663.3,888V438.7H694c16.9,0,30.6,13.8,30.6,30.6v285.9c0,73.2,59.5,132.7,132.7,132.7S990,828.4,990,755.2
+                V205.6c0-28.8-11.9-54.7-30.8-73.2L850.9,24.9c-19.6-19.6-51.2-19.6-70.8,0s-19.6,51.2,0,70.8l70.3,70.5l-51.9,54.1
+                c-16.9,17.4-16.9,45.3,0,62.8c8.4,9,19.6,13.2,30.8,13l58.5-0.2v459.5c0,16.9-13.8,30.6-30.6,30.6c-16.9,0-30.6-13.8-30.6-30.6
+                v-286c0-73.2-59.5-132.7-132.7-132.7h-30.6v-245c0-45.1-36.5-81.7-81.7-81.7H153c-45.1,0-81.7,36.5-81.7,81.7V888H61
+                c-28.3,0-51,22.9-51,51c0,28.3,22.9,51,51,51h612.6c28.3,0,51-22.9,51-51c0-28.3-22.9-51-51-51H663.3L663.3,888z M218.3,112h298
+                c25,0,45,20,45,45v216.4c0,25-20,45-45,45h-298c-25,0-45-20-45-45V157C173.3,132,193.3,112,218.3,112L218.3,112z"/>
+        </g>
+        </svg>
+          <h1>Pump Finder</h1></a>
     </header>
     <main>
 
       <h1>Dislike overpaying at the pump? Us too!</h1>
-      <h2 class="contentmaxwidth">Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.<br>To start, just select the year of your vehicle below.</h2>
+      <h2 class="contentmaxwidth">Let's help you find the cheapest gas.</h2>
       <a id="vehicle-form"></a>
 
       <section id="vehicle-setup" class="container">
@@ -53,14 +67,13 @@
             <option value="none">Model Not Listed</option>
           </select>
           <p id="no-vehicle-warning" class="hide">Please manually enter your MPG.</p>
-          <p id="saved-car" class="hide">My Car: <span id='my-year'></span> <span id='my-make'></span> <span id='my-model'></span></p>
           <label>
             Estimated MPG
-            <input type="number" name="vehicle-mpg" min="0" step="0.1" required>
+            <input type="number" name="vehicle-mpg" min="0" step="0.1" placeholder="mpg" required>
           </label>
           <label>
             How many gallons are you buying?</br>
-            <input type="number" name="gas-gallons" min="0" step="0.1" required>
+            <input type="number" name="gas-gallons" min="0" step="0.1" placeholder="gallons" required>
           </label>
           <label>
           <button type="submit" name="submit">Find Cheap Gas!</button>
@@ -73,7 +86,7 @@
         <label>
           <button class="back">Back</button>
         </label>
-        <h3>Cheapest 5 fuel pumps</h3>
+        <h3>Your Cheap Pumps</h3>
 
       <div id="map"></div>
 
@@ -99,8 +112,8 @@
         <section class="about contentmaxwidth">
           <hr />
           <h2>Joe Waine</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
-          <p>Joe Waine BIO: Joe Waine specializes in web development and visual design. He grew up in Seattle and loves the place where art, design, and technology meet. He dislikes paying a lot at the pump.</p>
+          <img class="photo" src="img/joe.jpg" alt="">
+          <p>Joe Waine specializes in web development and visual design. He grew up in Seattle and loves the place where art, design, and technology meet. He dislikes paying a lot at the pump.</p>
         </section>
         <section class="about contentmaxwidth">
           <hr />
@@ -111,8 +124,8 @@
         <section class="about contentmaxwidth">
           <hr />
           <h2>Robert Reed</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
+          <img class="photo" src="img/rob-small.jpg" alt="">
+          <p>Working on this project has been a great experience for me, as it allowed me to collaborate deeply with my partners. My main contributions were setting up our servers, generating the vehicle select form, and establishing our SPA navigation with page.js. Since coming to Code Fellows, I have learned many new concepts and am becoming a more well-rounded programmer. I am eager to continue my quest for knowledge, and to ultimately use that knowledge to benefit my community.</p>
         </section>
         <hr />
       </section>

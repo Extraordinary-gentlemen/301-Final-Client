@@ -29,5 +29,6 @@ a {
 header {
   background-color: rgb(228, 64, 77);
   display: inline-block;
+  height: 70px;
   width: 100%;
 }

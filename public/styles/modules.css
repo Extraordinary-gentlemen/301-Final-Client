@@ -12,19 +12,21 @@ button {
 
 #logo img {
   float: left;
-  margin-left: 1em;
-  padding: .5em 0em .5em .5em;
-  display: inline-block;
-  margin: 2px 15px 0 15px;
+    margin-left: 1em;
+    padding: .5em 0em .5em .5em;
+    display: inline-block;
+    margin: 2px 15px 0 15px;
 }
 
 header h1 {
   font-family: 'Kameron', serif;
-  font-weight: bold;
-  color: white;
-  font-size: 2em;
-  margin: 0.5em .5em .5em 0em;
-  display: inline-block;
+    font-weight: bold;
+    color: white;
+    font-size: 2em;
+    margin: 0 .5em .5em 0em;
+    display: inline-block;
+    line-height: 20px;
+    margin-top: 25px;
 }
 
 main h1 {
@@ -93,7 +95,6 @@ hr {
 }
 
 #vehicle-setup {
-  /*background: linear-gradient(#44070c, #861818);*/
   background-color: rgb(228, 64, 77);
   color: black;
   padding: 30px;
@@ -104,7 +105,6 @@ hr {
 }
 
 .container {
-  /*background: linear-gradient(#44070c, #861818);*/
   background-color: rgb(228, 64, 77);
   color: white;
   padding: 30px;
@@ -125,7 +125,6 @@ hr {
 
 main form select {
   display: block;
-  /* margin: 18px auto; */
   padding: 23px;
   list-style: none;
   height: 50px;
@@ -228,8 +227,6 @@ footer ul li {
   color: white;
 }
 
-
-
 #store-list ul:first-child{
   color: #fffefe;
   font-size: 30px;
@@ -255,4 +252,45 @@ header h2 a{
 
 .about h2{
   color: #fff;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #bbb;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #bbb;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #bbb;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #bbb;
+}
+
+a, a h1, button, a svg {
+  transition: 350ms all;
+}
+
+a:hover, a h1:hover, a:hover h1 {
+  color: #bbb;
+}
+
+a:hover svg {
+  fill: #bbb;
+}
+
+a svg {
+  fill: white;
+}
+
+.about p {
+  color: white;
+}
+
+img.photo {
+  width: 200px;
+}
+
+.about p {
+  text-indent: 1em;
 }
