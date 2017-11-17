@@ -5,3 +5,7 @@
 #map {
   color: black;
 }
+
+button {
+  outline: none;
+}

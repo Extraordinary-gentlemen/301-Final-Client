@@ -82,20 +82,31 @@ let debug = true;
     });
   }
 
+  module.closeInfoWindows = infoWindows => {
+    infoWindows.forEach(infoWindow => {
+      infoWindow.close();
+    })
+  };
+
   module.addMarkers = (lat, lng) => {
     if(debug) console.log('  For each store, add a marker to the map.');
 
-    var windowContent = `you are here! (${lat}, ${lng})`;
+    var windowContent = `You are here!`;
     var infowindow = new window.google.maps.InfoWindow({
       content: windowContent
     });
+
+    module.infoWindows = [infowindow];
+
     var marker = new window.google.maps.Marker({
       position: {lat: lat, lng: lng},
       map: module.map,
       icon: '../../img/me.png'
     });
     marker.addListener('click', function() {
-      infowindow.open(map, marker);
+      module.closeInfoWindows(module.infoWindows);
+      infowindow.open(module.map, marker);
+
     });
 
     module.allStores.forEach((store) => {
@@ -105,6 +116,7 @@ let debug = true;
         content: windowContent
       });
 
+      module.infoWindows.push(infowindow);
       var marker = new window.google.maps.Marker({
         position: store.coords,
         map: module.map,
@@ -112,7 +124,8 @@ let debug = true;
       });
 
       marker.addListener('click', function() {
-        infowindow.open(map, marker);
+        module.closeInfoWindows(module.infoWindows);
+        infowindow.open(module.map, marker);
       });
     });
   }
