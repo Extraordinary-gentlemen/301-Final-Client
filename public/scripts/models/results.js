@@ -106,7 +106,6 @@ let debug = true;
     marker.addListener('click', function() {
       module.closeInfoWindows(module.infoWindows);
       infowindow.open(module.map, marker);
-
     });
 
     module.allStores.forEach((store) => {
