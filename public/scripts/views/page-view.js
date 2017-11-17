@@ -9,8 +9,12 @@ var app = app || {};
     $('.container').hide();
     $result.removeClass('hide');
     $result.show();
-    window.google.maps.event.trigger(app.map, 'resize');
-    app.map.setCenter({lat: app.lat, lng: app.lng});
+    if(app.map) {
+      window.google.maps.event.trigger(app.map, 'resize');
+      app.map.setCenter({lat: app.lat, lng: app.lng});
+    } else {
+      page('/');
+    }
   };
 
   pageView.initSetupView = function(){
