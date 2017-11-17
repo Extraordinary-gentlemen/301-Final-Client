@@ -120,6 +120,8 @@ var app = app || {};
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
         module.queryApi(lat, lng);
+        module.lat = lat;
+        module.lng = lng;
       });
       $('#store-list, #map').empty();
     } else {

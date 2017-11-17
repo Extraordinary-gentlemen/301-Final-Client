@@ -10,6 +10,7 @@ var app = app || {};
     $result.removeClass('hide');
     $result.show();
     window.google.maps.event.trigger(app.map, 'resize');
+    app.map.setCenter({lat: app.lat, lng: app.lng});
   };
   pageView.initSetupView = function(ctx){
     let $setup = $('#vehicle-setup');
