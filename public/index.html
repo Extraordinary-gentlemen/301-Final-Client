@@ -19,10 +19,11 @@
     <link rel="stylesheet" href="vendor/styles/map.css">
     <script type="text/x-handlebars-template" id="store-display-template">
       <ul>
-        <li class="station-display">Buying From: {{stationDisplay}}</li>
-        <li class="pre-travel-cost">You are Spending: {{preTravelCost}}</li>
-        <li class="post-travel-cost">After Travel Cost: {{postTravelCost}}</li>
-        <li class="travel-time">Your Travel Time: {{travelTime}}</li>
+        <li class="station-display">{{stationDisplay}}</li>
+        <li class="travel-time">Travel Time: {{travelTime}}</li>
+
+        <li class="post-travel-cost">Total Cost: ${{postTravelCost}}</li>
+
       </ul>
       <br/>
       </script>
