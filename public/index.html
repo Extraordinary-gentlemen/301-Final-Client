@@ -28,16 +28,25 @@
   </head>
   <body>
     <header>
-      <a id="logo" href="/"><img class="left" src="img/logo.png" alt="Pumpfinder logo" height="100"></a>
-
-      <h1>Pump Finder</h1>
+      <a id="logo" href="/">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000; overflow: hidden; height: 43px; margin-top: 13px; margin-right: 16px; margin-left: 20px; float: left;" xml:space="preserve">
+          <g>
+            <path class="st0" d="M663.3,888V438.7H694c16.9,0,30.6,13.8,30.6,30.6v285.9c0,73.2,59.5,132.7,132.7,132.7S990,828.4,990,755.2
+                V205.6c0-28.8-11.9-54.7-30.8-73.2L850.9,24.9c-19.6-19.6-51.2-19.6-70.8,0s-19.6,51.2,0,70.8l70.3,70.5l-51.9,54.1
+                c-16.9,17.4-16.9,45.3,0,62.8c8.4,9,19.6,13.2,30.8,13l58.5-0.2v459.5c0,16.9-13.8,30.6-30.6,30.6c-16.9,0-30.6-13.8-30.6-30.6
+                v-286c0-73.2-59.5-132.7-132.7-132.7h-30.6v-245c0-45.1-36.5-81.7-81.7-81.7H153c-45.1,0-81.7,36.5-81.7,81.7V888H61
+                c-28.3,0-51,22.9-51,51c0,28.3,22.9,51,51,51h612.6c28.3,0,51-22.9,51-51c0-28.3-22.9-51-51-51H663.3L663.3,888z M218.3,112h298
+                c25,0,45,20,45,45v216.4c0,25-20,45-45,45h-298c-25,0-45-20-45-45V157C173.3,132,193.3,112,218.3,112L218.3,112z"/>
+          </g>
+        </svg>
+        <h1>Pump Finder</h1>
+      </a>
     </header>
     <main>
-
-      <h1>Welcome to Pump Finder</h1>
-      <h2 class="contentmaxwidth">Pump Finder will display the best location to get fuel based on your vehicle's fuel mileage, amount of fuel you need, and your current location.</h2>
-      <h2 class="contentmaxwidth">To start, just select the year of your vehicle below.</h2>
-      <a id="vehicle-form">
+      <h1>Dislike overpaying at the pump? Us too!</h1>
+      <h2 class="contentmaxwidth">Let's help you find the cheapest gas.</h2>
+      <a id="vehicle-form"></a>
 
       <section id="vehicle-setup" class="container">
         <form>
@@ -55,11 +64,11 @@
           <p id="no-vehicle-warning" class="hide">Please manually enter your MPG.</p>
           <label>
             Estimated MPG
-            <input type="number" name="vehicle-mpg" min="0" step="0.1" required>
+            <input type="number" name="vehicle-mpg" min="0" step="0.1" placeholder="mpg" required>
           </label>
           <label>
             How many gallons are you buying?</br>
-            <input type="number" name="gas-gallons" min="0" step="0.1" required>
+            <input type="number" name="gas-gallons" min="0" step="0.1" placeholder="gallons" required>
           </label>
           <label>
           <button type="submit" name="submit">Find Cheap Gas!</button>
@@ -68,11 +77,11 @@
       </section>
 
       <section id="result-display" class="hide container">
-
         <label>
           <button class="back">Back</button>
         </label>
-        <h3>Cheapest 5 fuel pumps</h3>
+        <h3>Your Cheap Pumps</h3>
+        <div id="map"></div>
         <ul id="store-list">
           <li>
             <ul>
@@ -83,41 +92,38 @@
             </ul>
           </li>
         </ul>
-        <div id="map"></div>
       </section>
 
       <section id="about-us"  class="hide container">
         <section class="about contentmaxwidth">
           <h2>Dustin Mundy</h2>
-          <img class="photo" src="img/dustin.jpg" alt="">
+          <img class="photo" src="img/dustin.jpg" alt="dustin">
           <p>Dustin is working to become a game developer. He grew up in the "Apple Capitol of the World", East Wenatchee, and later began writing code for various Minecraft servers. Dustin intends to take ASP .Net classes at Code Fellows and build his skill set while earning his way as a full-stack web developer.</p>
         </section>
         <section class="about contentmaxwidth">
           <hr />
           <h2>Joe Waine</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
-          <p>Joe Waine BIO: Joe Waine specializes in web development and visual design. He grew up in Seattle and loves the place where art, design, and technology meet. He dislikes paying a lot at the pump.</p>
+          <img class="photo" src="img/joe.jpg" alt="joe">
+          <p>Joe Waine specializes in web development and visual design. He grew up in Seattle and loves the place where art, design, and technology meet. He dislikes paying a lot at the pump.</p>
         </section>
         <section class="about contentmaxwidth">
           <hr />
           <h2>Adrian Hawk</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
+          <img class="photo" src="img/aqh.jpg" alt="adrian">
           <p>My original backgound comes in the form of Bartending (a distant memory) and serving in the U. S. NAVY. My service had numerous roles ~ OPERATIONS - ANALYST - INSTRUCTOR - LAW ENFORCEMENT - VBSS TEAMS. After I left the military, I took a position as an IT at the Tri-Lakes Board of REALTORS in SW Missouri. Then took on a role as an IT for HomeServices of America (A Berkshire Hathaway Affiliate) managing 5 offices in the Table Rock Lake area of SW Missouri. While helping REALTORS with their websites and building a couple for them, as well, I found I wanted to switch careers. I moved to the NW to surround myself in the Web Dev world and completed an Associate of Applied Science in Web Dev and Design in Portland. Now, I'm here at Code Fellows to get serious about coding.</p>
         </section>
         <section class="about contentmaxwidth">
           <hr />
           <h2>Robert Reed</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
+          <img class="photo" src="img/rob-small.jpg" alt="rob">
+          <p>Working on this project has been a great experience for me, as it allowed me to collaborate deeply with my partners. My main contributions were setting up our servers, generating the vehicle select form, and establishing our SPA navigation with page.js. Since coming to Code Fellows, I have learned many new concepts and am becoming a more well-rounded programmer. I am eager to continue my quest for knowledge, and to ultimately use that knowledge to benefit my community.</p>
         </section>
         <hr />
       </section>
-
-      <h2><a href="/about">About Us</a></h2>
     </main>
     <footer>
       <p>
-        &copy;2017 Pump Finder, Inc.
+        &copy;2017 Pump Finder, Inc. | <a href="/about">About Us</a>
       </p>
     </footer>
     <script

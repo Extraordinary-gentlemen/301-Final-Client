@@ -9,3 +9,288 @@
 button {
   outline: none;
 }
+
+#logo img {
+  float: left;
+    margin-left: 1em;
+    padding: .5em 0em .5em .5em;
+    display: inline-block;
+    margin: 2px 15px 0 15px;
+}
+
+header h1 {
+  font-family: 'Kameron', serif;
+    font-weight: bold;
+    color: white;
+    font-size: 2em;
+    margin: 0 .5em .5em 0em;
+    display: inline-block;
+    line-height: 20px;
+    margin-top: 25px;
+}
+
+main h1 {
+  color: #464545;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.1em;
+  margin: 0 auto;
+  padding: 1em 0 .2em;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+main h2 {
+  color: #737373;
+  font-size: 1.3em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 1em;
+  margin-bottom: .3em;
+  line-height: 1.5;
+}
+
+main h3 {
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  padding: 1em;
+  padding-left: 0;
+  padding-top: 6px;
+}
+
+form p {
+  color: white;
+  font-size: 1.2em;
+}
+
+footer p {
+  color: white;
+  font-size: .9em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  padding: 1.5em;
+  margin-bottom: .3em;
+}
+
+img.photo {
+  display: block;
+  border-radius: 200px;
+  margin: 0px auto 20px;
+}
+
+.about p {
+  font-size: 1.1em;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6em;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #fff;
+  margin: 3em auto;
+  width: 26em;
+}
+
+#vehicle-setup {
+  background-color: rgb(228, 64, 77);
+  color: black;
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 4px;
+}
+
+.container {
+  background-color: rgb(228, 64, 77);
+  color: white;
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 4px;
+}
+
+.container form label {
+  display: block;
+  color: white;
+  font-size: 1.1em;
+  font-family: 'Montserrat', sans-serif;
+  padding: .5em;
+  line-height: 30px;
+  padding-top: 0;
+}
+
+main form select {
+  display: block;
+  padding: 23px;
+  list-style: none;
+  height: 50px;
+  width: 100%;
+}
+
+form p{
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background: pink;
+  padding: 11px;
+  background: #e2dbdb;
+  color: #bb3535;
+  border-radius: 5px;
+  margin: 10px auto;
+
+}
+
+main form label {
+  text-align: center;
+}
+
+input[type=text], select {
+  width: 9em;
+  padding: 7px 7px;
+  margin: 10px auto;
+  border: 2px solid rgb(121, 4, 13);
+  border-radius: 7px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+input[type=text], input {
+  width: 8em;
+  padding: 2px 2px;
+  margin: 10px auto;
+  border: 0px solid rgb(121, 4, 13);
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.3em;
+  width: 100%;
+  height: 50px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline-offset: 0px !important;
+  outline: none !important;
+  box-shadow: 0 0 1px 1px red;
+  border: 2px solid rgb(121, 4, 13);
+}
+
+button {
+  color: white;
+  font-size: 1.2em;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  border: solid 0px white;
+  border-radius: 2px;
+  text-align: center;
+  background: #264065;
+  padding: .3em 1em .3em;
+  margin: 0 auto;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background: #3a4554;
+  color: white;
+  cursor: pointer;
+}
+
+
+form button{
+  width: 100%;
+}
+
+.back {
+  float: right;
+}
+
+#store-list {
+    font-size: 1.3em;
+    padding: .2em;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+}
+
+footer {
+  background-color: rgb(228, 64, 77);
+  display: inline-block;
+  width: 100%;
+}
+
+footer ul li {
+  color: white;
+}
+
+#store-list ul:first-child{
+  color: #fffefe;
+  font-size: 30px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
+}
+
+#store-list ul:first-child .station-display{
+  font-weight: bold;
+}
+
+
+header h2{
+  float: right;
+  margin: 0.73em 2em .5em 0em;
+}
+
+header h2 a{
+    line-height: 5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about h2{
+  color: #fff;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #bbb;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #bbb;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #bbb;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #bbb;
+}
+
+a, a h1, button, a svg {
+  transition: 350ms all;
+}
+
+a:hover, a h1:hover, a:hover h1 {
+  color: #bbb;
+}
+
+a:hover svg {
+  fill: #bbb;
+}
+
+a svg {
+  fill: white;
+}
+
+.about p {
+  color: white;
+}
+
+img.photo {
+  width: 200px;
+}
+
+.about p {
+  text-indent: 1em;
+}

@@ -60,6 +60,23 @@ var app = app || {};
       }, console.error);
   }
 
+  setupView.setSavedState = () => {
+    if(!localStorage.myCar) return;
+    let savedData = JSON.parse(localStorage.myCar);
+    module.setup.myCar = savedData;
+    if(savedData.make) {
+      setupView.$yearSelect.children().each(function() {
+        if($(this).val() === savedData.year) {
+          $(this).prop('selected', true);
+        }
+      });
+      module.setup.getMakes(savedData.year, true, savedData);
+    } else if(savedData && !savedData.make) {
+      // TODO: Fix flashy warning glitch
+      $noVehicleWarning.removeClass('hide').show();
+      setupView.$mpgInput.val(savedData.mpg);
+    }
+  };
 
   // Page load initializations
   $(() => {
@@ -80,7 +97,7 @@ var app = app || {};
       module.setup.myCar = {};
       if(val && val !== 'none') { // Year Selected
         module.setup.myCar.year = val;
-        module.setup.getMakes(val);
+        module.setup.getMakes(val, false);
       } else if(val) { // "Year Not listed" selected
         setupView.hideSelects();
       } else {
@@ -95,7 +112,7 @@ var app = app || {};
       module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
         module.setup.myCar.make = val;
-        module.setup.getModels(module.setup.myCar.year, val);
+        module.setup.getModels(module.setup.myCar.year, val, false);
       } else if(val) { // "Model not listed" selected
         setupView.hideSelects();
       }
@@ -113,29 +130,31 @@ var app = app || {};
         setupView.hideSelects();
       }
     });
-  });
 
-  $('#vehicle-setup form').on('submit', e => {
-    e.preventDefault();
-    module.setup.myCar.mpg = module.setupView.$mpgInput.val();
-    module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
-    localStorage.myCar = JSON.stringify(module.setup.myCar);
-    let message = `May we use your location to find your cheap gas?`;
-    if(confirm(message)) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        module.lat = position.coords.latitude;
-        module.lng = position.coords.longitude;
-        module.queryApi(module.lat, module.lng);
-      });
-    } else {
-      let loc = '';
-      while(!loc || !loc.replace(/ /g, '') || null) {
-        loc = prompt('Where ya at?');
+    $('#vehicle-setup form').on('submit', e => {
+      e.preventDefault();
+      module.setup.myCar.mpg = module.setupView.$mpgInput.val();
+      module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
+      localStorage.myCar = JSON.stringify(module.setup.myCar);
+      let message = `May we use your location to find you cheap gas?`;
+      if(confirm(message)) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          module.lat = position.coords.latitude;
+          module.lng = position.coords.longitude;
+          module.queryApi(module.lat, module.lng);
+        });
+      } else {
+        let loc = '';
+        while(!loc || !loc.replace(/ /g, '') || null) {
+          loc = prompt('Where will you be buying gas?');
+        }
+        setupView.getUserInput(encodeURI(loc.trim()));
       }
-      setupView.getUserInput(encodeURI(loc.trim()));
-    }
-    $('#store-list, #map').empty();
-  });
+      $('#store-list, #map').empty();
+      $('#saved-car').hide();
+    });
 
+    setupView.setSavedState();
+  });
   module.setupView = setupView;
 })(app);

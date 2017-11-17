@@ -1,4 +1,5 @@
-// Google Maps
+'use strict';
+
 var app = app || {};
 
 (function(module){
@@ -15,7 +16,7 @@ var app = app || {};
         module.addMarkers(lat, lng);
         page('/results');
       }, console.error);
-  }
+  };
 
   module.populateStoresList = () => {
     // Get gallons and average mpg from data retrieved earlier.
@@ -28,12 +29,12 @@ var app = app || {};
       storeArray.travelcost = storeArray.fuelCost * storeArray.usedFuel;
       storeArray.buyingCost = storeArray.fuelCost * gallonsBuying;
       storeArray.totalCost = storeArray.buyingCost + storeArray.travelcost;
-    })
+    });
 
-    module.allStores.sort((one,theOther) => one.totalCost - theOther.totalCost)
+    module.allStores.sort((one,theOther) => one.totalCost - theOther.totalCost);
 
     // this takes the first 5 indexes which should be the 5 smallest total costs.
-    module.topStores = module.allStores.slice(0,5)
+    module.topStores = module.allStores.slice(0,5);
 
     // for each of the top stores, we build an object with keys matching the handlebar placeholders in the template.
     // then append them to #store-list.
@@ -44,10 +45,9 @@ var app = app || {};
         postTravelCost: storeArray.totalCost.toFixed(2),
         travelTime: storeArray.duration,
         stationDisplay: `${storeArray.name} - ${storeArray.address}`
-      }
-      $('#store-list').append(format(data))
+      };
+      $('#store-list').append(format(data));
     });
-
   }
 
   module.renderMap = (lat,lng) => {
@@ -62,12 +62,12 @@ var app = app || {};
       },
       styles: mapStyle
     });
-  }
+  };
 
   module.closeInfoWindows = infoWindows => {
     infoWindows.forEach(infoWindow => {
       infoWindow.close();
-    })
+    });
   };
 
   module.addMarkers = (lat, lng) => {
@@ -83,6 +83,7 @@ var app = app || {};
       map: module.map,
       icon: '../../img/me.png'
     });
+
     marker.addListener('click', function() {
       module.closeInfoWindows(module.infoWindows);
       infowindow.open(module.map, marker);
@@ -107,166 +108,99 @@ var app = app || {};
         infowindow.open(module.map, marker);
       });
     });
-  }
+  };
 
   const mapStyle = [
     {
       elementType: 'geometry',
-      stylers: [
-        {
-          color: '#f5f5f5'
-        }
-      ]
+      stylers: [{color: '#f5f5f5'}]
     },
     {
       elementType: 'labels.icon',
-      stylers: [
-        {
-          visibility: 'off'
-        }
-      ]
+      stylers: [{visibility: 'off'}]
     },
     {
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#616161'
-        }
-      ]
+      stylers: [{color: '#616161'}]
     },
     {
       elementType: 'labels.text.stroke',
-      stylers: [
-        {
-          color: '#f5f5f5'
-        }
-      ]
+      stylers: [{color: '#f5f5f5'}]
     },
     {
       featureType: 'administrative.land_parcel',
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#bdbdbd'
-        }
-      ]
+      stylers: [{color: '#bdbdbd'}]
     },
     {
       featureType: 'poi',
       elementType: 'geometry',
-      stylers: [
-        {
-          color: '#eeeeee'
-        }
-      ]
+      stylers: [{color: '#eeeeee'}]
     },
     {
       featureType: 'poi',
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#757575'
-        }
-      ]
+      stylers: [{color: '#757575'}]
     },
     {
       featureType: 'poi.park',
       elementType: 'geometry',
-      stylers: [
-        {
-          color: '#e5e5e5'
-        }
-      ]
+      stylers: [{color: '#e5e5e5'}]
     },
     {
       featureType: 'poi.park',
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#9e9e9e'
-        }
-      ]
+      stylers: [{color: '#9e9e9e'}]
     },
     {
       featureType: 'road',
       elementType: 'geometry',
-      stylers: [
-        {
-          color: '#D13A23'
-        }
-      ]
+      stylers: [{color: '#D13A23'}]
     },
     {
       featureType: 'road.arterial',
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#757575'
-        }
-      ]
+      stylers: [{color: '#757575'}]
     },
     {
       featureType: 'road.highway',
       elementType: 'geometry',
       stylers: [
-        {
-          color: '#880000'
-        }
-      ]
+        {color: '#880000'}]
     },
     {
       featureType: 'road.highway',
       elementType: 'labels.text.fill',
       stylers: [
-        {
-          color: '#616161'
-        }
-      ]
+        {color: '#616161'}]
     },
     {
       featureType: 'road.local',
       elementType: 'labels.text.fill',
       stylers: [
-        {
-          color: '#9e9e9e'
-        }
-      ]
+        {color: '#9e9e9e'}]
     },
     {
       featureType: 'transit.line',
       elementType: 'geometry',
       stylers: [
-        {
-          color: '#e5e5e5'
-        }
-      ]
+        {color: '#e5e5e5'}]
     },
     {
       featureType: 'transit.station',
       elementType: 'geometry',
       stylers: [
-        {
-          color: '#eeeeee'
-        }
-      ]
+        {color: '#eeeeee'}]
     },
     {
       featureType: 'water',
       elementType: 'geometry',
-      stylers: [
-        {
-          color: '#AAC0C8'
-        }
-      ]
+      stylers: [{color: '#AAC0C8'}]
     },
     {
       featureType: 'water',
       elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#9e9e9e'
-        }
-      ]
+      stylers: [{color: '#9e9e9e'}]
     }
   ];
 
