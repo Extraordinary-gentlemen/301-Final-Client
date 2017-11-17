@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <html lang="en">
+<html lang="en">
+  <head>
     <title>Pump Finder</title>
     <link href="img/favicon.png" rel="icon" type="image/png">
     <meta charset="utf-8">
@@ -19,12 +19,13 @@
     <link rel="stylesheet" href="vendor/styles/map.css">
     <script type="text/x-handlebars-template" id="store-display-template">
       <ul>
-        <li class="pre-travel-cost">{{preTravelCost}}</li>
-        <li class="post-travel-cost">{{postTravelCost}}</li>
-        <li class="travel-time">{{travelTime}}</li>
-        <li class="station-display">{{stationDisplay}}</li>
+        <li class="station-display">Buying From: {{stationDisplay}}</li>
+        <li class="pre-travel-cost">You are Spending: {{preTravelCost}}</li>
+        <li class="post-travel-cost">After Travel Cost: {{postTravelCost}}</li>
+        <li class="travel-time">Your Travel Time: {{travelTime}}</li>
       </ul>
-    </script>
+      <br/>
+      </script>
   </head>
   <body>
     <header>
@@ -68,16 +69,18 @@
       </section>
 
       <section id="result-display" class="container">
+
         <label>
           <button class="back"><a href="index.html">Back</a></button>
         </label>
+        <h3>Cheapest 5 fuel pumps</h3>
         <ul id="store-list">
           <li>
             <ul>
-              <li id="pre-travel-cost">You are Spending</li>
-              <li id="post-travel-cost">After Travel Cost</li>
-              <li id="travel-time">Your Travel Time</li>
-              <li id="station-display">Buying From</li>
+              <li id="station-display"></li>
+              <li id="pre-travel-cost"></li>
+              <li id="post-travel-cost"></li>
+              <li id="travel-time"></li>
             </ul>
           </li>
         </ul>
@@ -87,7 +90,7 @@
       <section id="about-us"  class="container">
         <section class="about contentmaxwidth">
           <h2>Dustin Mundy</h2>
-          <img class="photo" src="img/aqh.jpg" alt="">
+          <img class="photo" src="img/dustin.jpg" alt="">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in lacus arcu. Nunc viverra massa at leo ultricies molestie. Pellentesque placerat sapien egestas justo pellentesque, eget dictum mi tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim odio, ullamcorper vitae massa sed, consectetur ultricies arcu. Etiam consequat neque quis est lobortis, vitae porttitor justo varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu nisl metus. Sed et neque nec sem fermentum imperdiet. Cras mattis, risus eget venenatis pretium, sem nisl sollicitudin ligula, id pretium neque lacus ac odio.</p>
         </section>
         <section class="about contentmaxwidth">
@@ -111,7 +114,7 @@
         <hr />
       </section>
 
-      <h3><a href="index.html">About Us</a></h3>
+      <h2><a href="index.html">About Us</a></h2>
     </main>
     <footer>
       <p>
