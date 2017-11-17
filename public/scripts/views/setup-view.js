@@ -2,7 +2,11 @@
 
 var app = app || {};
 
-(function(module){ //eslint-disable-line
+(function(module){
+  // Set the __API_URL__ for requests to the server
+  let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com';
+  if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
+
   // Setup Constants
   const setupView = {};
   setupView.$yearSelect = $('select[name="vehicle-year"]');
@@ -47,6 +51,15 @@ var app = app || {};
     module.setup.myCar = {};
   };
 
+  setupView.getUserInput = (input) => {
+    $.get(`${__API_URL__}/api/v1/userinput/${input}`)
+      .then(results => {
+        module.lat = results.lat;
+        module.lng = results.lng;
+        module.queryApi(module.lat, module.lng);
+      }, console.error);
+  }
+
 
   // Page load initializations
   $(() => {
@@ -73,13 +86,11 @@ var app = app || {};
       } else {
         setupView.$makeSelect.hide();
       }
-      console.log(module.setup.myCar); // TODO: take out later
     });
 
     setupView.$makeSelect.on('change', e => {
       let val = e.target.value;
       setupView.emptySelect(setupView.$modelSelect);
-      // setupView.$modelSelect.hide();
       setupView.$mpgInput.val('');
       module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
@@ -88,7 +99,6 @@ var app = app || {};
       } else if(val) { // "Model not listed" selected
         setupView.hideSelects();
       }
-      console.log(module.setup.myCar);
     });
 
     setupView.$modelSelect.on('change', e => {
@@ -102,7 +112,6 @@ var app = app || {};
       } else if(val) { // "Model not listed" selected
         setupView.hideSelects();
       }
-      console.log(module.setup.myCar);
     });
   });
 
@@ -110,23 +119,22 @@ var app = app || {};
     e.preventDefault();
     module.setup.myCar.mpg = module.setupView.$mpgInput.val();
     module.setup.myCar.gal = $('input[name="gas-gallons"]').val();
-    console.log(module.setup.myCar);
-    localStorage.myCar = module.setup.myCar;
-    let message = `To find the cheapest gas stations, we need to use your location.
-
-      Do you consent?`;
+    localStorage.myCar = JSON.stringify(module.setup.myCar);
+    let message = `May we use your location to find your cheap gas?`;
     if(confirm(message)) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        let lat = position.coords.latitude;
-        let lng = position.coords.longitude;
-        module.queryApi(lat, lng);
-        module.lat = lat;
-        module.lng = lng;
+        module.lat = position.coords.latitude;
+        module.lng = position.coords.longitude;
+        module.queryApi(module.lat, module.lng);
       });
-      $('#store-list, #map').empty();
     } else {
-      console.log('No GPS data.');
+      let loc = '';
+      while(!loc || !loc.replace(/ /g, '') || null) {
+        loc = prompt('Where ya at?');
+      }
+      setupView.getUserInput(encodeURI(loc.trim()));
     }
+    $('#store-list, #map').empty();
   });
 
   module.setupView = setupView;

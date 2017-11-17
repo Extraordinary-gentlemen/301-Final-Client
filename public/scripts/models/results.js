@@ -1,40 +1,27 @@
 // Google Maps
 var app = app || {};
 
-let debug = true;
-
 (function(module){
   // Set the __API_URL__ for requests to the server
   let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com';
   if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
 
   module.queryApi = (lat,lng) => {
-    if(debug) console.log('API Query Starting');
     $.get(`${__API_URL__}/api/v1/markers/${lat},${lng}`)
       .then(results => {
-        // if(debug) console.log(results);
         module.allStores = results;
-        if(debug) console.log('Populating Stores List');
         module.populateStoresList();
-        if(debug) console.log('Creating Google Map');
         module.renderMap(lat,lng);
-        if(debug) console.log('Adding Markers');
         module.addMarkers(lat, lng);
         page('/results');
-      }
-        ,
-      err => {
-        console.log('Error requesting information from server: ' + err);
-      });
+      }, console.error);
   }
 
   module.populateStoresList = () => {
-    if(debug) console.log('  Getting data from app.setup.myCar');
     // Get gallons and average mpg from data retrieved earlier.
     let gallonsBuying = module.setup.myCar.gal;
     let mpg = module.setup.myCar.mpg;
 
-    if(debug) console.log('  Calculating mathy stuffs');
     // for every store, calcukate used fuel, travel cost, buying cost, and total which is buying cost + travel cost.
     module.allStores.forEach(storeArray => {
       storeArray.usedFuel = storeArray.distance / mpg;
@@ -45,7 +32,6 @@ let debug = true;
 
     module.allStores.sort((one,theOther) => one.totalCost - theOther.totalCost)
 
-    // if(debug) console.log('  Shortening store list to just five entries');
     // this takes the first 5 indexes which should be the 5 smallest total costs.
     module.topStores = module.allStores.slice(0,5)
 
@@ -53,7 +39,6 @@ let debug = true;
     // then append them to #store-list.
     module.topStores.forEach(storeArray => {
       let format = Handlebars.compile($('#store-display-template').text());
-      // let buyingCost = Math.floor(storeArray.buyingCost * 100) / 100
       let data = {
         preTravelCost: storeArray.buyingCost.toFixed(2),
         postTravelCost: storeArray.totalCost.toFixed(2),
@@ -66,12 +51,9 @@ let debug = true;
   }
 
   module.renderMap = (lat,lng) => {
-
-    if(debug) console.log('  Creating map using google mystery code');
     //build map object out of google's crazy code
     module.map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: lat, lng: lng},
-      //TODO: zoom level should be dynamic and returned by API
       zoom: 12,
       mapTypeId: 'roadmap',
       zoomControl: true,
@@ -89,8 +71,6 @@ let debug = true;
   };
 
   module.addMarkers = (lat, lng) => {
-    if(debug) console.log('  For each store, add a marker to the map.');
-
     var windowContent = `You are here!`;
     var infowindow = new window.google.maps.InfoWindow({
       content: windowContent

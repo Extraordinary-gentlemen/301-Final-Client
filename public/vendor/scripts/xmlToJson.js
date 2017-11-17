@@ -4,11 +4,11 @@
 var app = app || {};
 
 (function(module){
-  function xmlToJson(xml) { //eslint-disable-line
+  function xmlToJson(xml) {
     // Create the return object
     var obj = {};
 
-    if (xml.nodeType === 1) { // element eslint-disable-line
+    if (xml.nodeType === 1) {
       // do attributes
       if (xml.attributes.length > 0) {
         obj['@attributes'] = {};

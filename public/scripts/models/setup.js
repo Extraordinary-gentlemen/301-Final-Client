@@ -36,13 +36,12 @@ var app = app || {};
   setup.getCar = (year, make, model) => {
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=${year}&make=${make}&model=${model}`)
       .then(results => {
-        // TODO: Some cars return multiple options. Do we want to take that into account? Currently ignored.
         setup.getMPG(setup.parseXML(results)[0]);
       }, console.error)
   };
 
   // Get the mpg for the specific car
-  setup.getMPG = id => { // eslint-disable-line
+  setup.getMPG = id => {
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/${id}`)
       .then(results => {
         let carData = module.xmlToJson(results).vehicle;
