@@ -9,6 +9,7 @@ var app = app || {};
     $('.container').hide();
     $result.removeClass('hide');
     $result.show();
+    window.google.maps.event.trigger(app.map, 'resize');
   };
   pageView.initSetupView = function(ctx){
     let $setup = $('#vehicle-setup');
