@@ -8,6 +8,24 @@ let debug = true;
   let __API_URL__ = 'https://extraordinary-gentlemen.herokuapp.com';
   if(location.hostname !== 'pumpfinder.herokuapp.com') __API_URL__ = 'http://localhost:4000';
 
+
+
+  module.getUserInput = (input) => {
+  $.get(`${__API_URL__}/api/v1/userinput/${input}`)
+     .then(results => {
+
+        console.log(results);
+
+      //  module.allStores = results;
+      //  module.populateStoresList();
+      //  module.renderMap(lat,lng);
+      //  module.addMarkers(lat, lng);
+
+     },err => {
+       console.log('error retrieving user input');
+     });
+  }
+
   module.queryApi = (lat,lng) => {
     if(debug) console.log('API Query Starting');
     $.get(`${__API_URL__}/api/v1/markers/${lat},${lng}`)
