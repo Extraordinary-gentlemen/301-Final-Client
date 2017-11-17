@@ -19,7 +19,7 @@ let debug = true;
         if(debug) console.log('Creating Google Map');
         module.renderMap(lat,lng);
         if(debug) console.log('Adding Markers');
-        module.addMarkers();
+        module.addMarkers(lat, lng);
         page('/results');
       }
         ,
@@ -78,12 +78,26 @@ let debug = true;
       zoomControlOptions: {
         position: window.google.maps.ControlPosition.RIGHT_CENTER
       },
-      // styles: mapStyle
+      styles: mapStyle
     });
   }
 
-  module.addMarkers = () => {
+  module.addMarkers = (lat, lng) => {
     if(debug) console.log('  For each store, add a marker to the map.');
+
+    var windowContent = `you are here! (${lat}, ${lng})`;
+    var infowindow = new window.google.maps.InfoWindow({
+      content: windowContent
+    });
+    var marker = new window.google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: module.map,
+      icon: '../../img/me.png'
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+
     module.allStores.forEach((store) => {
       var windowContent = `<p>${store.name}</p><br><span>distance: ${store.distance} miles<br>duration: ${store.duration}<br>price (regular): $${store.fuelCost}<br>travel cost: $${store.travelcost.toFixed(2)}<span>`;
 
@@ -93,7 +107,8 @@ let debug = true;
 
       var marker = new window.google.maps.Marker({
         position: store.coords,
-        map: module.map
+        map: module.map,
+        icon: '../../img/logo.png'
       });
 
       marker.addListener('click', function() {
@@ -185,7 +200,7 @@ let debug = true;
       elementType: 'geometry',
       stylers: [
         {
-          color: '#ffffff'
+          color: '#D13A23'
         }
       ]
     },
@@ -203,7 +218,7 @@ let debug = true;
       elementType: 'geometry',
       stylers: [
         {
-          color: '#dadada'
+          color: '#880000'
         }
       ]
     },
@@ -248,7 +263,7 @@ let debug = true;
       elementType: 'geometry',
       stylers: [
         {
-          color: '#c9c9c9'
+          color: '#AAC0C8'
         }
       ]
     },
