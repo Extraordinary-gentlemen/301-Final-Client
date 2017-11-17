@@ -15,20 +15,36 @@ var app = app || {};
   };
 
   // Get a list of all available vehicle makes and parse as an array
-  setup.getMakes = year => {
+  setup.getMakes = (year, setValue, data) => {
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/make?year=${year}`)
       .then(results => {
         module.setupView.loadMakes(setup.parseXML(results));
         module.setupView.$makeSelect.show();
+        if(setValue) {
+          module.setupView.$makeSelect.children().each(function() {
+            if($(this).val() === data.make) {
+              $(this).prop('selected', true);
+            }
+          });
+          module.setup.getModels(data.year, data.make, true, data);
+        }
       }, console.error);
   };
 
   // Get a list of all available vehicle models for given year and parse as an array
-  setup.getModels = (year, make) => {
+  setup.getModels = (year, make, setValue, data) => {
     $.get(`https://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=${year}&make=${make}`)
       .then(results => {
         module.setupView.loadModels(setup.parseXML(results));
         module.setupView.$modelSelect.show();
+        if(setValue) {
+          module.setupView.$modelSelect.children().each(function() {
+            if($(this).val() === data.model) {
+              $(this).prop('selected', true);
+            }
+          });
+          module.setupView.$mpgInput.val(data.mpg);
+        }
       }, console.error);
   };
 

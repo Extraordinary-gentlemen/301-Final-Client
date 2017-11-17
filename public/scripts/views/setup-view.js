@@ -61,6 +61,7 @@ var app = app || {};
   }
 
   setupView.setSavedState = () => {
+    if(!localStorage.myCar) return;
     let savedData = JSON.parse(localStorage.myCar);
     if(savedData.make) {
       setupView.$yearSelect.children().each(function() {
@@ -68,8 +69,7 @@ var app = app || {};
           $(this).prop('selected', true);
         }
       });
-      module.setup.getMakes(savedData.year);
-      app.setupView.setNext = true;
+      module.setup.getMakes(savedData.year, true, savedData);
     } else if(savedData && !savedData.make) {
       // TODO: Fix flashy warning glitch
       $noVehicleWarning.removeClass('hide').show();
@@ -97,7 +97,7 @@ var app = app || {};
       module.setup.myCar = {};
       if(val && val !== 'none') { // Year Selected
         module.setup.myCar.year = val;
-        module.setup.getMakes(val);
+        module.setup.getMakes(val, false);
       } else if(val) { // "Year Not listed" selected
         setupView.hideSelects();
       } else {
@@ -112,7 +112,7 @@ var app = app || {};
       module.setup.myCar = {year: module.setup.myCar.year};
       if(val && val !== 'none') { // Model Selected
         module.setup.myCar.make = val;
-        module.setup.getModels(module.setup.myCar.year, val);
+        module.setup.getModels(module.setup.myCar.year, val, false);
       } else if(val) { // "Model not listed" selected
         setupView.hideSelects();
       }
